@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dwji233lfuw32"]
+
+[ext_resource type="Texture2D" uid="uid://dgmkw3ase0yw" path="res://sprites/statue.png" id="1_s61p0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yj4mq"]
+radius = 9.0
+height = 28.0
+
+[node name="Statue" type="StaticBody2D" unique_id=1446208426]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1930893169]
+position = Vector2(-1, 2)
+shape = SubResource("CapsuleShape2D_yj4mq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1712015060]
+texture = ExtResource("1_s61p0")

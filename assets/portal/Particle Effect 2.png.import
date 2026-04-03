@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcrlpbxw2e8pq"
-path="res://.godot/imported/Idle (16 x 16).png-4358bc2b6079cf7ed0c4b84395d4a3e6.ctex"
+uid="uid://b7fyocyqxpjvw"
+path="res://.godot/imported/Particle Effect 2.png-17eb9488beb9e0a705e87f69465051df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/1 - Penguin/Idle (16 x 16).png"
-dest_files=["res://.godot/imported/Idle (16 x 16).png-4358bc2b6079cf7ed0c4b84395d4a3e6.ctex"]
+source_file="res://assets/portal/Particle Effect 2.png"
+dest_files=["res://.godot/imported/Particle Effect 2.png-17eb9488beb9e0a705e87f69465051df.ctex"]
 
 [params]
 

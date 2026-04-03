@@ -4,17 +4,25 @@ const SPEED = 100.0
 const JUMP_VELOCITY = -260.0
 const MAX_ESTATUAS = 2
 
-var cena_estatua = preload("res://scene/statue.tscn")
+var spawn_position: Vector2
+var cena_estatua = preload("res://scenes/statue.tscn")
 var estatuas_criadas = 0
-
 var pode_mover = true
+
+@onready var anim = $AnimatedSprite2D
+@onready var sfx = $AudioStreamPlayer2D
+
+func _ready() -> void:
+	spawn_position = global_position
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("reset_level"):
 		get_tree().reload_current_scene()
+		return
 
 	if Input.is_action_just_pressed("petrify"):
 		criar_estatua()
+		return
 		
 	if not pode_mover:
 		return
@@ -40,13 +48,22 @@ func criar_estatua():
 		return
 		
 	pode_mover = false
+	velocity = Vector2.ZERO
+	
+	anim.play("petrify")
+	sfx.play()
+	await anim.animation_finished
+	
 
 	var estatua = cena_estatua.instantiate()
 	estatua.global_position = global_position
 	get_parent().add_child(estatua)
 
 	estatuas_criadas += 1
-	await get_tree().create_timer(0.2).timeout
+	
+	global_position = spawn_position
+	velocity = Vector2.ZERO
+
+	anim.play("idle")
 
 	pode_mover = true
-	print("Estátuas criadas: ", estatuas_criadas)

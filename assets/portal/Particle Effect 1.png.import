@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgmkw3ase0yw"
-path="res://.godot/imported/statue.png-8ccd23be4bdcec5f58b8ca16bce49b3d.ctex"
+uid="uid://cgor186u48ex6"
+path="res://.godot/imported/Particle Effect 1.png-3868301e337a059b97b59420653e9691.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/statue.png"
-dest_files=["res://.godot/imported/statue.png-8ccd23be4bdcec5f58b8ca16bce49b3d.ctex"]
+source_file="res://assets/portal/Particle Effect 1.png"
+dest_files=["res://.godot/imported/Particle Effect 1.png-3868301e337a059b97b59420653e9691.ctex"]
 
 [params]
 

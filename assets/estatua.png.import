@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://huuwxqvj72uj"
-path="res://.godot/imported/Ducking (16 x 16).png-a23afab6a0dd96c96a976d698c661440.ctex"
+uid="uid://ddggdlncl76p1"
+path="res://.godot/imported/estatua.png-00a4aea2bb0914a75fb1a2d443c7ed2f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/1 - Penguin/Ducking (16 x 16).png"
-dest_files=["res://.godot/imported/Ducking (16 x 16).png-a23afab6a0dd96c96a976d698c661440.ctex"]
+source_file="res://assets/estatua.png"
+dest_files=["res://.godot/imported/estatua.png-00a4aea2bb0914a75fb1a2d443c7ed2f.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iygglvwm7fra"
-path="res://.godot/imported/Falling (16 x 16).png-11874a016daa6c38f126545921e014a8.ctex"
+uid="uid://c08xi0lbeutg"
+path="res://.godot/imported/Particle Effect 3.png-62ded1e6039fb22e18ef7a1671643cb0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/1 - Penguin/Falling (16 x 16).png"
-dest_files=["res://.godot/imported/Falling (16 x 16).png-11874a016daa6c38f126545921e014a8.ctex"]
+source_file="res://assets/portal/Particle Effect 3.png"
+dest_files=["res://.godot/imported/Particle Effect 3.png-62ded1e6039fb22e18ef7a1671643cb0.ctex"]
 
 [params]
 

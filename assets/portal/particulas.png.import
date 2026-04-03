@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3cjaktflqcht"
-path="res://.godot/imported/Blink (16 x 16).png-f16f8a249b7afd4f4d8b7075ed6b2402.ctex"
+uid="uid://bvo2ueqq0en17"
+path="res://.godot/imported/particulas.png-fe524f4861ad1d17410d39ada67bd356.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/1 - Penguin/Blink (16 x 16).png"
-dest_files=["res://.godot/imported/Blink (16 x 16).png-f16f8a249b7afd4f4d8b7075ed6b2402.ctex"]
+source_file="res://assets/portal/particulas.png"
+dest_files=["res://.godot/imported/particulas.png-fe524f4861ad1d17410d39ada67bd356.ctex"]
 
 [params]
 

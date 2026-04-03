@@ -1,14 +1,14 @@
-[gd_scene format=3 uid="uid://y7tj4arsko78"]
+[gd_scene format=3 uid="uid://duph61oaf0boy"]
 
-[ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="1_5kiuu"]
+[ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="1_uwrxv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kiuu"]
 size = Vector2(99, 19.5)
 
 [node name="Game" type="Node2D" unique_id=2086339800]
 
-[node name="Player" parent="." unique_id=1984505922 instance=ExtResource("1_5kiuu")]
-position = Vector2(29, 77)
+[node name="Player" parent="." unique_id=1984505922 instance=ExtResource("1_uwrxv")]
+position = Vector2(13, 144)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=809441894]
 position = Vector2(10, 637)

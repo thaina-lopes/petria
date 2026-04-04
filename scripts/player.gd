@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED = 80.0
 const JUMP_VELOCITY = -260.0
 const MAX_ESTATUAS = 2
 
@@ -34,11 +34,28 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	var direction := Input.get_axis("move_left", "move_right")
+	
+	if direction > 0:
+		anim.flip_h = false
+	elif direction < 0:
+		anim.flip_h = true
 
 	if direction != 0:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	# ANIMAÇÕES
+	if not is_on_floor():
+		if anim.animation != "jump":
+			anim.play("jump")
+	else:
+		if direction != 0:
+			if anim.animation != "walk":
+				anim.play("walk")
+		else:
+			if anim.animation != "idle":
+				anim.play("idle")
 
 	move_and_slide()
 
@@ -57,6 +74,7 @@ func criar_estatua():
 
 	var estatua = cena_estatua.instantiate()
 	estatua.global_position = global_position
+	estatua.get_node("Estatua").flip_h = anim.flip_h
 	get_parent().add_child(estatua)
 
 	estatuas_criadas += 1

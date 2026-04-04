@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://duph61oaf0boy"]
 
 [ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="1_uwrxv"]
+[ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://assets/audio/music.mp3" id="2_yqjtg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5kiuu"]
 size = Vector2(99, 19.5)
@@ -33,3 +34,9 @@ position = Vector2(127, 583)
 position = Vector2(40, -467)
 shape = SubResource("RectangleShape2D_5kiuu")
 debug_color = Color(0, 0.63982606, 0.3635807, 0.41960785)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=2146839060]
+stream = ExtResource("2_yqjtg")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5uj4yitiga7f"
-path="res://.godot/imported/Portal-Sheet.png-7a5d6c7a4a22cd73feb9f511e9463973.ctex"
+uid="uid://d3jd6tvn48v75"
+path="res://.godot/imported/Terrain_brown (16 x 16).png-b8d1dc0644b505272973ea50f8d93204.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portal/Portal-Sheet.png"
-dest_files=["res://.godot/imported/Portal-Sheet.png-7a5d6c7a4a22cd73feb9f511e9463973.ctex"]
+source_file="res://assets/tileset/Tileset/Terrain_brown (16 x 16).png"
+dest_files=["res://.godot/imported/Terrain_brown (16 x 16).png-b8d1dc0644b505272973ea50f8d93204.ctex"]
 
 [params]
 

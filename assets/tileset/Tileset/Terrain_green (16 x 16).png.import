@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7fyocyqxpjvw"
-path="res://.godot/imported/Particle Effect 2.png-17eb9488beb9e0a705e87f69465051df.ctex"
+uid="uid://bwikgqmgal2on"
+path="res://.godot/imported/Terrain_green (16 x 16).png-654ce66a1cfcd24e55724e5293cd9aca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/portal/Particle Effect 2.png"
-dest_files=["res://.godot/imported/Particle Effect 2.png-17eb9488beb9e0a705e87f69465051df.ctex"]
+source_file="res://assets/tileset/Tileset/Terrain_green (16 x 16).png"
+dest_files=["res://.godot/imported/Terrain_green (16 x 16).png-654ce66a1cfcd24e55724e5293cd9aca.ctex"]
 
 [params]
 

@@ -30,23 +30,23 @@ region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nm46"]
 atlas = ExtResource("2_e4p34")
-region = Rect2(0, 32, 32, 32)
+region = Rect2(0, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i623q"]
 atlas = ExtResource("2_e4p34")
-region = Rect2(32, 32, 32, 32)
+region = Rect2(32, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ef06p"]
 atlas = ExtResource("2_e4p34")
-region = Rect2(64, 32, 32, 32)
+region = Rect2(64, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tjdhl"]
 atlas = ExtResource("2_e4p34")
-region = Rect2(96, 32, 32, 32)
+region = Rect2(96, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oprnr"]
 atlas = ExtResource("2_e4p34")
-region = Rect2(128, 32, 32, 32)
+region = Rect2(128, 160, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x08pd"]
 atlas = ExtResource("2_e4p34")
@@ -81,7 +81,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 3.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -126,10 +126,10 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 4.0
+"speed": 9.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1984505922]
+[node name="Player" type="CharacterBody2D" unique_id=1984505922 groups=["player"]]
 script = ExtResource("1_merdl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=513544968]
@@ -137,9 +137,12 @@ position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_u3f3p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=392721122]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_6nm46")
-animation = &"idle"
+animation = &"petrify"
 autoplay = "idle"
+frame = 4
+frame_progress = 1.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1342310926]
 stream = ExtResource("3_e4p34")

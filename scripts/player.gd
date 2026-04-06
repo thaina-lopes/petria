@@ -1,10 +1,12 @@
 extends CharacterBody2D
 
+signal estatua_criada
+signal morreu
+
 const SPEED = 80.0
 const JUMP_VELOCITY = -260.0
 const MAX_ESTATUAS = 2
 
-var spawn_position: Vector2
 var cena_estatua = preload("res://scenes/statue.tscn")
 var estatuas_criadas = 0
 var pode_mover = true
@@ -12,10 +14,20 @@ var pode_mover = true
 @onready var anim = $AnimatedSprite2D
 @onready var sfx = $AudioStreamPlayer2D
 
-func _ready() -> void:
-	spawn_position = global_position
+	
+func morrer():
+	if not pode_mover:
+		return
+
+	pode_mover = false
+	velocity = Vector2.ZERO
+	morreu.emit()
 
 func _physics_process(delta: float) -> void:
+	if global_position.y > 320:
+		morrer()
+		return
+		
 	if Input.is_action_just_pressed("reset_level"):
 		get_tree().reload_current_scene()
 		return
@@ -70,7 +82,6 @@ func criar_estatua():
 	anim.play("petrify")
 	sfx.play()
 	await anim.animation_finished
-	
 
 	var estatua = cena_estatua.instantiate()
 	estatua.global_position = global_position
@@ -78,10 +89,24 @@ func criar_estatua():
 	get_parent().add_child(estatua)
 
 	estatuas_criadas += 1
-	
-	global_position = spawn_position
-	velocity = Vector2.ZERO
+	estatua_criada.emit(estatuas_criadas)
 
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 0.08)
+	await tween.finished
+
+	var offset_x := 20.0
+	if anim.flip_h:
+		global_position = estatua.global_position + Vector2(20, -2)
+	else:
+		global_position = estatua.global_position + Vector2(-20, -2)
+
+	velocity = Vector2.ZERO
 	anim.play("idle")
+	modulate.a = 0.0
+
+	var tween2 = create_tween()
+	tween2.tween_property(self, "modulate:a", 1.0, 0.12)
+	await tween2.finished
 
 	pode_mover = true

@@ -3,28 +3,30 @@ extends CharacterBody2D
 signal estatua_criada
 signal morreu
 
+enum PlayerState {
+	IDLE,
+	WALK,
+	JUMP,
+	PETRIFY,
+	DEAD
+}
+
 const SPEED = 80.0
 const JUMP_VELOCITY = -260.0
 const MAX_ESTATUAS = 2
+const FALL_LIMIT_Y = 320.0
 
 var cena_estatua = preload("res://scenes/statue.tscn")
 var estatuas_criadas = 0
 var pode_mover = true
+var state: PlayerState = PlayerState.IDLE
 
-@onready var anim = $AnimatedSprite2D
-@onready var sfx = $AudioStreamPlayer2D
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-	
-func morrer():
-	if not pode_mover:
-		return
-
-	pode_mover = false
-	velocity = Vector2.ZERO
-	morreu.emit()
 
 func _physics_process(delta: float) -> void:
-	if global_position.y > 320:
+	if global_position.y > FALL_LIMIT_Y:
 		morrer()
 		return
 		
@@ -42,42 +44,33 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
 	var direction := Input.get_axis("move_left", "move_right")
-	
-	if direction > 0:
-		anim.flip_h = false
-	elif direction < 0:
-		anim.flip_h = true
-
-	if direction != 0:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
-	# ANIMAÇÕES
-	if not is_on_floor():
-		if anim.animation != "jump":
-			anim.play("jump")
-	else:
-		if direction != 0:
-			if anim.animation != "walk":
-				anim.play("walk")
-		else:
-			if anim.animation != "idle":
-				anim.play("idle")
+	update_flip(direction)
+	update_horizontal_movement(direction)
+	update_state(direction)
+	update_animation()
 
 	move_and_slide()
 
-func criar_estatua():
+
+func morrer() -> void:
+	if not pode_mover:
+		return
+
+	pode_mover = false
+	velocity = Vector2.ZERO
+	state = PlayerState.DEAD
+	morreu.emit()
+
+
+func criar_estatua() -> void:
 	if estatuas_criadas >= MAX_ESTATUAS:
 		print("Limite de estátuas atingido!")
 		return
 		
 	pode_mover = false
 	velocity = Vector2.ZERO
+	state = PlayerState.PETRIFY
 	
 	anim.play("petrify")
 	sfx.play()
@@ -95,7 +88,6 @@ func criar_estatua():
 	tween.tween_property(self, "modulate:a", 0.0, 0.08)
 	await tween.finished
 
-	var offset_x := 20.0
 	if anim.flip_h:
 		global_position = estatua.global_position + Vector2(20, -2)
 	else:
@@ -110,3 +102,55 @@ func criar_estatua():
 	await tween2.finished
 
 	pode_mover = true
+	state = PlayerState.IDLE
+
+
+func update_flip(direction: float) -> void:
+	if direction > 0:
+		anim.flip_h = false
+	elif direction < 0:
+		anim.flip_h = true
+
+
+func update_horizontal_movement(direction: float) -> void:
+	if direction != 0:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+
+func update_state(direction: float) -> void:
+	if state == PlayerState.DEAD or state == PlayerState.PETRIFY:
+		return
+
+	if not is_on_floor():
+		state = PlayerState.JUMP
+		return
+
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		state = PlayerState.JUMP
+		return
+
+	if direction != 0:
+		state = PlayerState.WALK
+	else:
+		state = PlayerState.IDLE
+
+
+func update_animation() -> void:
+	match state:
+		PlayerState.IDLE:
+			if anim.animation != "idle":
+				anim.play("idle")
+		PlayerState.WALK:
+			if anim.animation != "walk":
+				anim.play("walk")
+		PlayerState.JUMP:
+			if anim.animation != "jump":
+				anim.play("jump")
+		PlayerState.PETRIFY:
+			if anim.animation != "petrify":
+				anim.play("petrify")
+		PlayerState.DEAD:
+			pass

@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://d18u6qsn8d2kc"]
+
+[ext_resource type="Script" uid="uid://cyiybh0d7hxgd" path="res://scenes/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://ccbx706rrw5w7" path="res://telainicial.png" id="2_wu84c"]
+[ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="3_8ln24"]
+[ext_resource type="AudioStream" uid="uid://dn6k2g1wd8vao" path="res://sound/start.mp3" id="4_wu84c"]
+[ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://assets/audio/music.mp3" id="5_8ln24"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+bg_color = Color(0.21568628, 0.21568628, 0.21568628, 0.39215687)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.42352942, 0.9647059, 0.627451, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
+bg_color = Color(0.21568628, 0.21568628, 0.21568628, 0.39215687)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9877072, 0.9879356, 0.9859808, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+bg_color = Color(0.21568628, 0.21568628, 0.21568628, 0.39215687)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.96862745, 0.65882355, 0.9137255, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk1qb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbmy8"]
+
+[sub_resource type="Gradient" id="Gradient_bqqt6"]
+offsets = PackedFloat32Array(0.16176471, 0.52205884, 0.9264706)
+colors = PackedColorArray(0.5411765, 0.9529412, 0.5921569, 1, 0.7372549, 0.4117647, 0.73333335, 1, 0.56056887, 0.89941823, 0.6061194, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wu84c"]
+gradient = SubResource("Gradient_bqqt6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ln24"]
+lifetime_randomness = 0.24
+particle_flag_disable_z = true
+direction = Vector3(-1, 20, 0)
+initial_velocity_min = 18.89
+initial_velocity_max = 45.0
+angular_velocity_min = -468.0
+angular_velocity_max = -115.20001
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 2.0
+color = Color(0.90588236, 0.9098039, 0.8862745, 0.68235296)
+color_ramp = SubResource("GradientTexture1D_wu84c")
+hue_variation_min = -0.04000002
+hue_variation_max = 0.019999977
+
+[sub_resource type="Animation" id="Animation_ejswk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_conm7"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bbk5w"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtw2f"]
+_data = {
+&"RESET": SubResource("Animation_ejswk"),
+&"fade_in": SubResource("Animation_conm7"),
+&"fade_out": SubResource("Animation_bbk5w")
+}
+
+[node name="MainMenu" type="Control" unique_id=1809151546]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 481.0
+offset_bottom = 270.0
+script = ExtResource("1_bqqt6")
+
+[node name="Background" type="TextureRect" parent="." unique_id=854013938]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.000001
+offset_top = -6.000002
+offset_right = 2698.0
+offset_bottom = 1490.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_wu84c")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="StartButton" type="Button" parent="." unique_id=1183564480]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.5
+offset_top = -114.0
+offset_right = 30.5
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.42352942, 0.9647059, 0.627451, 1)
+theme_override_colors/font_focus_color = Color(0.42352942, 0.9647059, 0.627451, 1)
+theme_override_colors/font_hover_color = Color(1, 0.67058825, 0.9372549, 1)
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ln24")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtw2f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_oa1go")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jk1qb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tbmy8")
+text = "START"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=885947340]
+position = Vector2(244, -71)
+amount = 50
+lifetime = 10.41
+process_material = SubResource("ParticleProcessMaterial_8ln24")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="." unique_id=1026245261]
+stream = ExtResource("4_wu84c")
+volume_db = -10.0
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1870113361]
+stream = ExtResource("5_8ln24")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1901676153]
+
+[node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=832915913]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionLayer" unique_id=73811054]
+libraries/ = SubResource("AnimationLibrary_rtw2f")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

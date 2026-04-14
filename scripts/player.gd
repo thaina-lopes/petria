@@ -11,8 +11,8 @@ enum PlayerState {
 	DEAD
 }
 
-const SPEED = 80.0
-const JUMP_VELOCITY = -260.0
+const SPEED = 100.0
+const JUMP_VELOCITY = -300.0
 const MAX_ESTATUAS = 2
 const FALL_LIMIT_Y = 320.0
 

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://d18u6qsn8d2kc"]
 
-[ext_resource type="Script" uid="uid://cyiybh0d7hxgd" path="res://scenes/main_menu.gd" id="1_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://ccbx706rrw5w7" path="res://telainicial.png" id="2_wu84c"]
+[ext_resource type="Script" uid="uid://cyiybh0d7hxgd" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://b2x8dr0hegc2e" path="res://tela_inicial.png" id="2_8ln24"]
 [ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="3_8ln24"]
 [ext_resource type="AudioStream" uid="uid://dn6k2g1wd8vao" path="res://sound/start.mp3" id="4_wu84c"]
-[ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://assets/audio/music.mp3" id="5_8ln24"]
+[ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://sound/music.mp3" id="5_8ln24"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
 bg_color = Color(0.21568628, 0.21568628, 0.21568628, 0.39215687)
@@ -12,7 +12,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.42352942, 0.9647059, 0.627451, 1)
+border_color = Color(0.2627451, 0.94509804, 0.92941177, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -136,14 +136,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -14.000001
-offset_top = -6.000002
-offset_right = 2698.0
-offset_bottom = 1490.0
+offset_left = -8.000001
+offset_top = -2.0000017
+offset_right = 2607.27
+offset_bottom = 1440.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.16, 0.16)
-texture = ExtResource("2_wu84c")
+texture = ExtResource("2_8ln24")
 expand_mode = 1
 stretch_mode = 6
 
@@ -160,8 +160,8 @@ offset_right = 30.5
 offset_bottom = -87.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.42352942, 0.9647059, 0.627451, 1)
-theme_override_colors/font_focus_color = Color(0.42352942, 0.9647059, 0.627451, 1)
+theme_override_colors/font_color = Color(0.2615163, 0.9449354, 0.92932206, 1)
+theme_override_colors/font_focus_color = Color(0.2627451, 0.94509804, 0.92941177, 1)
 theme_override_colors/font_hover_color = Color(1, 0.67058825, 0.9372549, 1)
 theme_override_fonts/font = ExtResource("3_8ln24")
 theme_override_font_sizes/font_size = 24
@@ -184,7 +184,7 @@ volume_db = -10.0
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1870113361]
 stream = ExtResource("5_8ln24")
-volume_db = -20.0
+volume_db = -35.0
 autoplay = true
 parameters/looping = true
 
@@ -202,5 +202,31 @@ color = Color(0, 0, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionLayer" unique_id=73811054]
 libraries/ = SubResource("AnimationLibrary_rtw2f")
+
+[node name="Label" type="Label" parent="." unique_id=1928279313]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 202.0
+offset_right = 94.0
+offset_bottom = 223.0
+theme_override_colors/font_color = Color(0.7677168, 0.5779946, 0.8192375, 1)
+theme_override_colors/font_outline_color = Color(0.34509805, 0.19215687, 0.3764706, 0.85882354)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 18
+text = "Reinicia"
+
+[node name="Label2" type="Label" parent="." unique_id=834479090]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 233.0
+offset_right = 100.0
+offset_bottom = 254.0
+theme_override_colors/font_color = Color(0.7677168, 0.5779946, 0.8192375, 1)
+theme_override_colors/font_outline_color = Color(0.34509805, 0.19215687, 0.3764706, 0.85882354)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_8ln24")
+theme_override_font_sizes/font_size = 18
+text = "Petrifica"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

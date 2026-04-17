@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dbqy33mht1mtg"]
+
+[ext_resource type="Script" uid="uid://bnspnnraros7d" path="res://scripts/magic_platform.gd" id="1_xglmo"]
+[ext_resource type="Texture2D" uid="uid://dpktwj0pflvn2" path="res://assets/plat.png" id="2_tsgjv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsgjv"]
+atlas = ExtResource("2_tsgjv")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjnh0"]
+atlas = ExtResource("2_tsgjv")
+region = Rect2(48, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua61w"]
+atlas = ExtResource("2_tsgjv")
+region = Rect2(96, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6305n"]
+atlas = ExtResource("2_tsgjv")
+region = Rect2(144, 0, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kldc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsgjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjnh0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua61w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6305n")
+}],
+"loop": false,
+"name": &"materializar",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mgw3c"]
+size = Vector2(46, 7)
+
+[node name="MagicPlatform" type="Node2D" unique_id=424371832]
+script = ExtResource("1_xglmo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=706905899]
+sprite_frames = SubResource("SpriteFrames_kldc7")
+animation = &"materializar"
+frame_progress = 1.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1326312871]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1748871057]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_mgw3c")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -1,0 +1,237 @@
+[gd_scene format=3 uid="uid://1vw8dnl6ryow"]
+
+[ext_resource type="Script" uid="uid://6nw7ff6jncny" path="res://final_scene.gd" id="1_qifxa"]
+[ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="2_b6q55"]
+[ext_resource type="Texture2D" uid="uid://c1i0ppv13wvhq" path="res://assets/backback.png" id="2_egufw"]
+[ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://sound/music.mp3" id="4_egufw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6q55"]
+bg_color = Color(0.21568628, 0.21568628, 0.21568628, 0.39215687)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2627451, 0.94509804, 0.92941177, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_egufw"]
+bg_color = Color(0.21568628, 0.21568628, 0.21568628, 0.39215687)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.9877072, 0.9879356, 0.9859808, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r78si"]
+bg_color = Color(0.21568628, 0.21568628, 0.21568628, 0.39215687)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.96862745, 0.65882355, 0.9137255, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ytd0m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwokc"]
+
+[sub_resource type="Animation" id="Animation_ejswk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_conm7"]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bbk5w"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qifxa"]
+_data = {
+&"RESET": SubResource("Animation_ejswk"),
+&"fade_in": SubResource("Animation_conm7"),
+&"fade_out": SubResource("Animation_bbk5w")
+}
+
+[sub_resource type="Gradient" id="Gradient_b6q55"]
+offsets = PackedFloat32Array(0.16176471, 0.52205884, 0.9264706)
+colors = PackedColorArray(0.5411765, 0.9529412, 0.5921569, 1, 0.7372549, 0.4117647, 0.73333335, 1, 0.56056887, 0.89941823, 0.6061194, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_56dhn"]
+gradient = SubResource("Gradient_b6q55")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_egufw"]
+lifetime_randomness = 0.24
+particle_flag_disable_z = true
+direction = Vector3(-1, 20, 0)
+initial_velocity_min = 18.89
+initial_velocity_max = 45.0
+angular_velocity_min = -468.0
+angular_velocity_max = -115.20001
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 2.0
+color = Color(0.90588236, 0.9098039, 0.8862745, 0.68235296)
+color_ramp = SubResource("GradientTexture1D_56dhn")
+hue_variation_min = -0.04000002
+hue_variation_max = 0.019999977
+
+[node name="FinalScene" type="Control" unique_id=294687333]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 481.0
+offset_bottom = 269.0
+script = ExtResource("1_qifxa")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=888414841]
+position = Vector2(240, 135)
+texture = ExtResource("2_egufw")
+
+[node name="TitleLabel" type="Label" parent="." unique_id=1001342374]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.5
+offset_top = 36.0
+offset_right = 198.5
+offset_bottom = 132.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_b6q55")
+theme_override_font_sizes/font_size = 22
+text = "Você concluiu Petria!
+Obrigada por jogar meu joguinho <3"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="." unique_id=41789765]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = 34.5
+offset_right = 31.5
+offset_bottom = 59.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_b6q55")
+theme_override_font_sizes/font_size = 21
+text = "Tempo:"
+
+[node name="DeathsLabel" type="Label" parent="." unique_id=787613912]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.5
+offset_top = 62.5
+offset_right = 53.5
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_b6q55")
+theme_override_font_sizes/font_size = 21
+text = "Tentativas:"
+
+[node name="MenuButton" type="Button" parent="." unique_id=952351713]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.5
+offset_top = -41.0
+offset_right = -164.5
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.2615163, 0.9449354, 0.92932206, 1)
+theme_override_colors/font_focus_color = Color(0.2627451, 0.94509804, 0.92941177, 1)
+theme_override_colors/font_hover_color = Color(1, 0.67058825, 0.9372549, 1)
+theme_override_fonts/font = ExtResource("2_b6q55")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_b6q55")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_egufw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_r78si")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ytd0m")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iwokc")
+text = "Voltar"
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1616861097]
+
+[node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=769342678]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TransitionLayer" unique_id=1955176478]
+libraries/ = SubResource("AnimationLibrary_qifxa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=840481949]
+position = Vector2(244, -71)
+amount = 50
+lifetime = 10.41
+process_material = SubResource("ParticleProcessMaterial_egufw")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1860264744]
+stream = ExtResource("4_egufw")
+volume_db = -25.0
+autoplay = true
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

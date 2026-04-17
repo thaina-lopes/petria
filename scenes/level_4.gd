@@ -16,6 +16,9 @@ func _ready() -> void:
 
 	$Player.estatua_criada.connect(_on_estatua_criada)
 	$Player.morreu.connect(_on_player_morreu)
+	
+	$Button.pressionado.connect(_on_button_pressionado)
+	$Button.solto.connect(_on_button_solto)
 
 	atualizar_hud()
 
@@ -44,12 +47,20 @@ func _on_fragmento_coletado() -> void:
 func _on_player_morreu() -> void:
 	if fase_finalizada:
 		return
+		
+	GameManager.registrar_morte()
 
 	$TransitionLayer/AnimationPlayer.play("fade_out")
 	fade_out_musica()
 
 	await $TransitionLayer/AnimationPlayer.animation_finished
 	get_tree().reload_current_scene()
+	
+func _on_button_pressionado() -> void:
+	$MagicPlatform.ativar()
+
+func _on_button_solto() -> void:
+	$MagicPlatform.desativar()
 
 func atualizar_hud() -> void:
 	$CanvasLayer/HUD/FragmentsLabel.text = "Fragmentos: %d/%d" % [coletados, total_fragmentos]
@@ -60,11 +71,11 @@ func finalizar_fase() -> void:
 	fade_out_musica()
 
 	await $TransitionLayer/AnimationPlayer.animation_finished
-	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_5.tscn")
 
 func fade_in_musica() -> void:
 	var tween = create_tween()
-	tween.tween_property($Music, "volume_db", -20.0, 1.0)
+	tween.tween_property($Music, "volume_db", -25.0, 1.0)
 
 func fade_out_musica() -> void:
 	var tween = create_tween()

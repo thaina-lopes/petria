@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dq4vorqwusx7q" path="res://scripts/button.gd" id="1_rhj8v"]
 [ext_resource type="Texture2D" uid="uid://dosnyikgyklek" path="res://assets/button.png" id="2_3q610"]
+[ext_resource type="AudioStream" uid="uid://c2rxpf8od57jg" path="res://sound/platformSound.ogg" id="3_3q610"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7y4x"]
 atlas = ExtResource("2_3q610")
@@ -41,3 +42,7 @@ frame_progress = 0.62767476
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=306303129]
 position = Vector2(16, 19.5)
 shape = SubResource("RectangleShape2D_mi6dp")
+
+[node name="PlatformSound" type="AudioStreamPlayer" parent="." unique_id=1295523462]
+stream = ExtResource("3_3q610")
+volume_db = -20.0

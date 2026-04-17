@@ -3,15 +3,14 @@
 [ext_resource type="Script" uid="uid://d2djqgxvcbxcp" path="res://scripts/level_2.gd" id="1_ne2mo"]
 [ext_resource type="Texture2D" uid="uid://c1i0ppv13wvhq" path="res://assets/backback.png" id="2_6cvei"]
 [ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="3_6cvei"]
-[ext_resource type="PackedScene" uid="uid://bgsgmvpgbivlg" path="res://scenes/button.tscn" id="4_ne2mo"]
 [ext_resource type="PackedScene" uid="uid://bh4rd27jkm8nh" path="res://scenes/fragment.tscn" id="4_que50"]
 [ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://sound/music.mp3" id="6_y0kc7"]
-[ext_resource type="Texture2D" uid="uid://bstpvwrs1dokv" path="res://assets/tileset/Tileset.png" id="7_ne2mo"]
+[ext_resource type="Texture2D" uid="uid://hebu7ox50dx1" path="res://assets/tileset/decorations.png" id="7_ne2mo"]
 [ext_resource type="Texture2D" uid="uid://bstpvwrs1dokv" path="res://assets/tileset/Tileset.png" id="8_6cvei"]
 [ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="9_6cvei"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6cvei"]
-texture = ExtResource("7_ne2mo")
+texture = ExtResource("8_6cvei")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
@@ -862,6 +861,55 @@ texture = ExtResource("8_6cvei")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_que50")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hey2k"]
+texture = ExtResource("7_ne2mo")
+0:0/0 = 0
+1:0/0 = 0
+3:0/0 = 0
+5:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+10:0/0 = 0
+12:0/0 = 0
+14:0/0 = 0
+8:1/0 = 0
+12:1/0 = 0
+0:2/0 = 0
+2:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+8:3/0 = 0
+0:4/0 = 0
+2:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+7:4/0 = 0
+9:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+9:2/0 = 0
+9:3/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_172wr"]
+sources/0 = SubResource("TileSetAtlasSource_hey2k")
+
 [sub_resource type="Animation" id="Animation_ejswk"]
 length = 0.001
 tracks/0/type = "value"
@@ -946,11 +994,7 @@ texture = ExtResource("2_6cvei")
 
 [node name="Player" parent="." unique_id=1984505922 instance=ExtResource("3_6cvei")]
 z_index = 1
-position = Vector2(50, 160)
-
-[node name="Button" parent="." unique_id=1210992206 instance=ExtResource("4_ne2mo")]
-visible = false
-position = Vector2(81, 154)
+position = Vector2(76, 160)
 
 [node name="Fragments" type="Control" parent="." unique_id=815265007]
 z_index = 1
@@ -982,9 +1026,13 @@ tile_set = SubResource("TileSet_p57ef")
 tile_map_data = PackedByteArray("AAAGAAwAAAANAA4AAAADAAwAAAACAAEAAAADAA0AAAACAAIAAAADAA4AAAACAAMAAAAEAAwAAAADAAEAAAAEAA0AAAADAAIAAAAEAA4AAAADAAMAAAAFAAwAAAAEAAEAAAA=")
 tile_set = SubResource("TileSet_hey2k")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=572764566]
+[node name="Decoration" type="TileMapLayer" parent="Tiles" unique_id=626437386]
+tile_map_data = PackedByteArray("AAAFAA4AAAAHAAYAAAAGAA4AAAAIAAYAAAACAAoAAAADAAYAAAADAAoAAAAEAAYAAAAFAAIAAAAHAAIAAAAGAAIAAAAIAAIAAAAGAAMAAAAIAAMAAAAHAAIAAAAJAAIAAAAHAAMAAAAJAAMAAAAIAAIAAAAEAAIAAAAJAAIAAAAFAAIAAAARAAIAAAAAAAAAAAASAAIAAAABAAAAAAASAAMAAAABAAEAAAATAAIAAAAMAAAAAAATAAMAAAAMAAEAAAAbAAoAAAAOAAAAAAAFAA0AAAAKAAAAAAA=")
+tile_set = SubResource("TileSet_172wr")
 
-[node name="HUD" type="Control" parent="CanvasLayer" unique_id=1243535186]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1144227137]
+
+[node name="HUD" type="Control" parent="CanvasLayer" unique_id=298914590]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -995,18 +1043,18 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="FragmentsLabel" type="Label" parent="CanvasLayer/HUD" unique_id=463039070]
+[node name="FragmentsLabel" type="Label" parent="CanvasLayer/HUD" unique_id=656879418]
 layout_mode = 1
 offset_left = 33.0
 offset_top = 31.0
 offset_right = 64.0
 offset_bottom = 37.0
-theme_override_colors/font_color = Color(0.601223, 0.601223, 0.60122293, 1)
+theme_override_colors/font_color = Color(0.8474744, 0.84747446, 0.8474743, 1)
 theme_override_fonts/font = ExtResource("9_6cvei")
 theme_override_font_sizes/font_size = 7
 text = "Fragmentos: 0/2"
 
-[node name="EstatuesLabel" type="Label" parent="CanvasLayer/HUD" unique_id=121439303]
+[node name="EstatuesLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1360477205]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -1016,13 +1064,12 @@ offset_top = 38.0
 offset_right = -356.0
 offset_bottom = 46.0
 grow_horizontal = 0
-theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_colors/font_color = Color(0.84705883, 0.84705883, 0.84705883, 1)
 theme_override_fonts/font = ExtResource("9_6cvei")
 theme_override_font_sizes/font_size = 7
 text = "Estátuas: 0/2"
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1062293800]
-visible = false
 
 [node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=1911773711]
 anchors_preset = 15

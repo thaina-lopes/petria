@@ -31,6 +31,7 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	if Input.is_action_just_pressed("reset_level"):
+		GameManager.registrar_morte()
 		get_tree().reload_current_scene()
 		return
 
@@ -47,10 +48,13 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("move_left", "move_right")
 	update_flip(direction)
 	update_horizontal_movement(direction)
-	update_state(direction)
-	update_animation()
+	if direction != 0:
+		apply_floor_snap()
 
 	move_and_slide()
+	
+	update_state(direction)
+	update_animation()
 
 
 func morrer() -> void:

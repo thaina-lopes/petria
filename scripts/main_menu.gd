@@ -18,6 +18,7 @@ func _on_start_button_pressed() -> void:
 	if iniciando_jogo:
 		return
 
+	GameManager.iniciar_jogo()
 	iniciando_jogo = true
 	$StartButton.disabled = true
 
@@ -30,7 +31,7 @@ func _on_start_button_pressed() -> void:
 
 func fade_in_musica() -> void:
 	var tween = create_tween()
-	tween.tween_property($Music, "volume_db", -35.0, 1.0)
+	tween.tween_property($Music, "volume_db", -30.0, 1.0)
 
 func fade_out_musica() -> void:
 	var tween = create_tween()

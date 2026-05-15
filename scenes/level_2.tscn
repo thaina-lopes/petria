@@ -8,6 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://hebu7ox50dx1" path="res://assets/tileset/decorations.png" id="7_ne2mo"]
 [ext_resource type="Texture2D" uid="uid://bstpvwrs1dokv" path="res://assets/tileset/Tileset.png" id="8_6cvei"]
 [ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="9_6cvei"]
+[ext_resource type="Texture2D" uid="uid://cyls1hidinvxe" path="res://assets/constrols/R.png" id="9_7qsfm"]
+[ext_resource type="Script" uid="uid://d2db7h1u42qhi" path="res://scripts/controls.gd" id="9_bv48q"]
+[ext_resource type="Texture2D" uid="uid://bp8i3752kefkn" path="res://assets/constrols/R-press.png" id="10_bv48q"]
+[ext_resource type="Texture2D" uid="uid://3l2x6tesphx0" path="res://assets/constrols/E.png" id="11_k22d5"]
+[ext_resource type="Texture2D" uid="uid://dd4hu6aug5dph" path="res://assets/constrols/E-press.png" id="12_k6a82"]
+[ext_resource type="Texture2D" uid="uid://dnys7buij2lwf" path="res://assets/constrols/left_n.png" id="13_1sb0y"]
+[ext_resource type="Texture2D" uid="uid://b0ckw2xhx4au2" path="res://assets/constrols/left_p.png" id="14_vhnap"]
+[ext_resource type="Texture2D" uid="uid://b4jtmypdetf7" path="res://assets/constrols/rigth_n.png" id="15_vwfin"]
+[ext_resource type="Texture2D" uid="uid://be8j05ewm6dmp" path="res://assets/constrols/rigth_p.png" id="16_63d2t"]
+[ext_resource type="Texture2D" uid="uid://y5rldxyjmkc8" path="res://assets/constrols/up_n.png" id="17_va6c3"]
+[ext_resource type="Texture2D" uid="uid://b20ajngejrvvl" path="res://assets/constrols/up_p.png" id="18_pc3at"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6cvei"]
 texture = ExtResource("8_6cvei")
@@ -1008,7 +1019,7 @@ position = Vector2(438, 39)
 
 [node name="Fragment2" parent="Fragments" unique_id=483856347 instance=ExtResource("4_que50")]
 z_index = -1
-position = Vector2(74, 225)
+position = Vector2(76, 225)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=2146839060]
 stream = ExtResource("6_y0kc7")
@@ -1027,7 +1038,7 @@ tile_map_data = PackedByteArray("AAAGAAwAAAANAA4AAAADAAwAAAACAAEAAAADAA0AAAACAAI
 tile_set = SubResource("TileSet_hey2k")
 
 [node name="Decoration" type="TileMapLayer" parent="Tiles" unique_id=626437386]
-tile_map_data = PackedByteArray("AAAFAA4AAAAHAAYAAAAGAA4AAAAIAAYAAAACAAoAAAADAAYAAAADAAoAAAAEAAYAAAAFAAIAAAAHAAIAAAAGAAIAAAAIAAIAAAAGAAMAAAAIAAMAAAAHAAIAAAAJAAIAAAAHAAMAAAAJAAMAAAAIAAIAAAAEAAIAAAAJAAIAAAAFAAIAAAARAAIAAAAAAAAAAAASAAIAAAABAAAAAAASAAMAAAABAAEAAAATAAIAAAAMAAAAAAATAAMAAAAMAAEAAAAbAAoAAAAOAAAAAAAFAA0AAAAKAAAAAAA=")
+tile_map_data = PackedByteArray("AAAFAA4AAAAHAAYAAAAGAA4AAAAIAAYAAAACAAoAAAADAAYAAAADAAoAAAAEAAYAAAAFAAIAAAAHAAIAAAAGAAIAAAAIAAIAAAAGAAMAAAAIAAMAAAAHAAIAAAAJAAIAAAAHAAMAAAAJAAMAAAAIAAIAAAAEAAIAAAAJAAIAAAAFAAIAAAARAAIAAAAAAAAAAAASAAIAAAABAAAAAAASAAMAAAABAAEAAAATAAIAAAAMAAAAAAATAAMAAAAMAAEAAAAbAAoAAAAOAAAAAAAPAAwAAAAAAAYAAAA=")
 tile_set = SubResource("TileSet_172wr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1144227137]
@@ -1068,6 +1079,49 @@ theme_override_colors/font_color = Color(0.84705883, 0.84705883, 0.84705883, 1)
 theme_override_fonts/font = ExtResource("9_6cvei")
 theme_override_font_sizes/font_size = 7
 text = "Estátuas: 0/2"
+
+[node name="Controls" type="CanvasLayer" parent="." unique_id=635631316]
+script = ExtResource("9_bv48q")
+
+[node name="R" type="TouchScreenButton" parent="Controls" unique_id=1283719970]
+position = Vector2(450, 213.99998)
+scale = Vector2(0.061445165, 0.06144516)
+texture_normal = ExtResource("9_7qsfm")
+texture_pressed = ExtResource("10_bv48q")
+action = "reset_level"
+visibility_mode = 1
+
+[node name="E" type="TouchScreenButton" parent="Controls" unique_id=1648911417]
+position = Vector2(430, 241)
+scale = Vector2(0.061445124, 0.06144512)
+texture_normal = ExtResource("11_k22d5")
+texture_pressed = ExtResource("12_k6a82")
+action = "petrify"
+visibility_mode = 1
+
+[node name="Left" type="TouchScreenButton" parent="Controls" unique_id=1036359467]
+position = Vector2(4, 246.00002)
+scale = Vector2(0.6219513, 0.6219513)
+texture_normal = ExtResource("13_1sb0y")
+texture_pressed = ExtResource("14_vhnap")
+action = "move_left"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="Controls" unique_id=838496434]
+position = Vector2(39.999996, 245)
+scale = Vector2(0.6585366, 0.6585366)
+texture_normal = ExtResource("15_vwfin")
+texture_pressed = ExtResource("16_63d2t")
+action = "move_right"
+visibility_mode = 1
+
+[node name="Up" type="TouchScreenButton" parent="Controls" unique_id=1668754556]
+position = Vector2(23.000002, 225.99998)
+scale = Vector2(0.65378344, 0.64634156)
+texture_normal = ExtResource("17_va6c3")
+texture_pressed = ExtResource("18_pc3at")
+action = "jump"
+visibility_mode = 1
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1062293800]
 

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cenemy0sc0001"]
+
+[ext_resource type="Script" uid="uid://cenemy0gd0001" path="res://scripts/enemy.gd" id="1_enemy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_phys"]
+radius = 7.0
+height = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dmg"]
+radius = 12.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=238787074 groups=["enemy"]]
+collision_layer = 2
+script = ExtResource("1_enemy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1015310511]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_phys")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025481613]
+position = Vector2(0, -8)
+scale = Vector2(2, 2)
+animation = &""
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=583255422]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=779576741]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_dmg")

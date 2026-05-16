@@ -7,6 +7,7 @@ const CHASE_SPEED     := 75.0
 const DETECTION_RANGE := 110.0
 const ATTACK_RANGE    := 18.0
 const PATROL_DISTANCE := 64.0
+const CHASE_TIMEOUT   := 4.0
 
 var state: EnemyState = EnemyState.IDLE
 var patrol_direction: int = 1
@@ -14,6 +15,7 @@ var patrol_start_x: float = 0.0
 var patrol_timer: float = 0.0
 var patrol_wait: float = 2.0
 var attack_timer: float = 0.0
+var chase_timer: float = 0.0
 var player: CharacterBody2D = null
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -79,6 +81,7 @@ func _update_ai(delta: float) -> void:
 				patrol_start_x = global_position.x
 				state = EnemyState.PATROL
 			if dist < DETECTION_RANGE:
+				chase_timer = 0.0
 				state = EnemyState.CHASE
 
 		EnemyState.PATROL:
@@ -88,12 +91,13 @@ func _update_ai(delta: float) -> void:
 				state = EnemyState.IDLE
 				patrol_timer = 0.0
 			if dist < DETECTION_RANGE:
+				chase_timer = 0.0
 				state = EnemyState.CHASE
 
 		EnemyState.CHASE:
-			if dist > DETECTION_RANGE * 1.4:
-				state = EnemyState.IDLE
-				patrol_timer = 0.0
+			chase_timer += delta
+			if chase_timer >= CHASE_TIMEOUT:
+				_return_to_patrol()
 				return
 			if dist <= ATTACK_RANGE:
 				state = EnemyState.ATTACK
@@ -107,6 +111,14 @@ func _update_ai(delta: float) -> void:
 			attack_timer += delta
 			if attack_timer >= 0.7:
 				state = EnemyState.CHASE
+
+
+func _return_to_patrol() -> void:
+	chase_timer = 0.0
+	patrol_start_x = global_position.x
+	patrol_timer = 0.0
+	patrol_wait = randf_range(1.5, 3.0)
+	state = EnemyState.PATROL
 
 
 # ---------------------------------------------------------------------------

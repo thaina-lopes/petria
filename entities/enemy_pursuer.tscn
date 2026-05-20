@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://dxs8ps1oh4uy"]
+
+[ext_resource type="Script" uid="uid://ccfydoan3ve6l" path="res://scripts/enemy_pursuer.gd" id="1_enemy"]
+[ext_resource type="Texture2D" uid="uid://t1t1ig4j7r18" path="res://assets/splash.png" id="2_qepeu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c2md"]
+atlas = ExtResource("2_qepeu")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ivaa"]
+atlas = ExtResource("2_qepeu")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm55l"]
+atlas = ExtResource("2_qepeu")
+region = Rect2(64, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1rnn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c2md")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ivaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm55l")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qepeu"]
+size = Vector2(17, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c2md"]
+size = Vector2(19, 16)
+
+[node name="EnemyPursuer" type="CharacterBody2D" unique_id=144555663 groups=["enemy"]]
+position = Vector2(-6, -1)
+collision_layer = 4
+script = ExtResource("1_enemy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1929418462]
+sprite_frames = SubResource("SpriteFrames_o1rnn")
+animation = &"walk"
+frame_progress = 0.75046927
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=861644947]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qepeu")
+
+[node name="HitArea" type="Area2D" parent="." unique_id=2082890121]
+position = Vector2(1, 2)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=119888017]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_2c2md")
+debug_color = Color(0.9, 0.1, 0.1, 0.4)

@@ -142,12 +142,26 @@ anchor_right = 0.5
 offset_left = -198.5
 offset_top = 36.0
 offset_right = 198.5
-offset_bottom = 132.0
+offset_bottom = 71.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_b6q55")
 theme_override_font_sizes/font_size = 22
-text = "Você concluiu Petria!
-Obrigada por jogar meu joguinho <3"
+text = "KEY_FINISH_TITLE"
+horizontal_alignment = 1
+
+[node name="ThanksLabel" type="Label" parent="." unique_id=1400066672]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -196.5
+offset_top = 71.0
+offset_right = 200.5
+offset_bottom = 106.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_b6q55")
+theme_override_font_sizes/font_size = 22
+text = "KEY_THANK_YOU"
 horizontal_alignment = 1
 
 [node name="TimeLabel" type="Label" parent="." unique_id=41789765]
@@ -165,7 +179,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_b6q55")
 theme_override_font_sizes/font_size = 21
-text = "Tempo:"
+text = "KEY_TIME"
 
 [node name="DeathsLabel" type="Label" parent="." unique_id=787613912]
 layout_mode = 1
@@ -182,7 +196,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_b6q55")
 theme_override_font_sizes/font_size = 21
-text = "Tentativas:"
+text = "KEY_ATTEMPTS"
 
 [node name="MenuButton" type="Button" parent="." unique_id=952351713]
 layout_mode = 1
@@ -207,7 +221,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_egufw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_r78si")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_ytd0m")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iwokc")
-text = "Voltar"
+text = "KEY_BACK"
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1616861097]
 

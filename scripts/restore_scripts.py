@@ -1,4 +1,6 @@
-extends Node2D
+import os
+
+template = """extends Node2D
 
 var total_estatuas := 2
 var estatuas_usadas := 0
@@ -23,10 +25,6 @@ func _ready() -> void:
 			$Player.vida_alterada.connect(_on_vida_alterada)
 
 	atualizar_hud()
-
-	if has_node("Button"):
-		$Button.pressionado.connect(_on_button_pressionado)
-		$Button.solto.connect(_on_button_solto)
 
 	if has_node("TransitionLayer/FadeRect"):
 		$TransitionLayer/FadeRect.color.a = 1.0
@@ -72,14 +70,6 @@ func _on_player_morreu() -> void:
 		await $TransitionLayer/AnimationPlayer.animation_finished
 	get_tree().reload_current_scene()
 
-func _on_button_pressionado() -> void:
-	if has_node("MagicPlatform"):
-		$MagicPlatform.ativar()
-
-func _on_button_solto() -> void:
-	if has_node("MagicPlatform"):
-		$MagicPlatform.desativar()
-
 func atualizar_hud() -> void:
 	if has_node("CanvasLayer/HUD/FragmentsLabel"):
 		$CanvasLayer/HUD/FragmentsLabel.text = tr("KEY_CRYSTALS") % ("%d/%d" % [coletados, total_fragmentos])
@@ -95,8 +85,7 @@ func finalizar_fase() -> void:
 
 	if has_node("TransitionLayer/AnimationPlayer"):
 		await $TransitionLayer/AnimationPlayer.animation_finished
-	GameManager.finalizar_jogo()
-	get_tree().change_scene_to_file("res://scenes/final_scene.tscn")
+	get_tree().change_scene_to_file("{NEXT_LEVEL}")
 
 func fade_in_musica() -> void:
 	if not has_node("Music"): return
@@ -130,3 +119,22 @@ func spawn_sparkles_on_decorations() -> void:
 			var sparkle = sparkle_scene.instantiate()
 			sparkle.position = dec.map_to_local(cell)
 			dec.add_child(sparkle)
+"""
+
+levels = {
+    "level_0.gd": "res://scenes/level_1.tscn",
+    "level_1.gd": "res://scenes/level_2.tscn",
+    "level_2.gd": "res://scenes/level_3.tscn",
+    "level_3.gd": "res://scenes/level_4.tscn",
+    "level_4.gd": "res://scenes/level_5.tscn",
+    "level_5.gd": "res://scenes/final_scene.tscn"
+}
+
+os.chdir(r"c:\Users\thain\Documents\petria\scripts")
+
+for level, next_lvl in levels.items():
+    content = template.replace("{NEXT_LEVEL}", next_lvl)
+    with open(level, "w", encoding="utf-8") as f:
+        f.write(content)
+
+print("Restored all levels with updated code.")

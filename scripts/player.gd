@@ -13,7 +13,9 @@ enum PlayerState {
 	HURT
 }
 
-const SPEED = 100.0
+const SPEED = 120.0
+const ACCELERATION = 900.0
+const FRICTION = 1200.0
 const JUMP_VELOCITY = -300.0
 const MAX_ESTATUAS = 2
 const FALL_LIMIT_Y = 320.0
@@ -84,12 +86,12 @@ func _physics_process(delta: float) -> void:
 	if state == PlayerState.HURT:
 		if not is_on_floor():
 			var grav = get_gravity()
-			if velocity.y > 0.0:
-				grav *= 1.5
+			# Removido multiplicador de queda pesada (grav *= 1.5) para manter consistência
 			velocity += grav * delta
 		move_and_slide()
 		return
 
+	# Atualiza timers de movimento
 	if is_on_floor():
 		coyote_timer = COYOTE_TIME
 		has_jumped = false
@@ -101,18 +103,31 @@ func _physics_process(delta: float) -> void:
 	else:
 		jump_buffer_timer -= delta
 
+	# Processa o pulo ANTES de move_and_slide() e da gravidade.
+	# Isso corrige o bug do "pulo duplo no ar" garantindo que is_on_floor() 
+	# seja atualizado corretamente no próximo frame.
+	if jump_buffer_timer > 0.0 and coyote_timer > 0.0 and not has_jumped:
+		velocity.y = JUMP_VELOCITY
+		jump_buffer_timer = 0.0
+		coyote_timer = 0.0
+		has_jumped = true
+
+	# Aplica gravidade
 	if not is_on_floor():
 		var grav = get_gravity()
+		# Mantém a gravidade menor no ápice do pulo se segurar o botão (sensação de controle)
 		if abs(velocity.y) < 60.0 and Input.is_action_pressed("jump"):
-			grav *= 0.5
-		elif velocity.y > 0.0:
-			grav *= 1.5
+			grav *= 0.8
+		# Removido multiplicador de queda pesada (grav *= 1.5) para queda mais natural
 		velocity += grav * delta
 
 	var direction := Input.get_axis("move_left", "move_right")
 	update_flip(direction)
-	update_horizontal_movement(direction)
-	if direction != 0:
+	update_horizontal_movement(direction, delta)
+	
+	# Só aplica snap ao chão se não estiver subindo (pulando)
+	# para evitar ser puxado de volta ao chão imediatamente
+	if direction != 0 and velocity.y >= 0:
 		apply_floor_snap()
 
 	move_and_slide()
@@ -248,25 +263,26 @@ func update_flip(direction: float) -> void:
 		anim.flip_h = true
 
 
-func update_horizontal_movement(direction: float) -> void:
+func update_horizontal_movement(direction: float, delta: float) -> void:
 	if direction != 0:
-		velocity.x = direction * SPEED
+		velocity.x = move_toward(
+			velocity.x,
+			direction * SPEED,
+			ACCELERATION * delta
+		)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(
+			velocity.x,
+			0,
+			FRICTION * delta
+		)
 
 
 func update_state(direction: float) -> void:
 	if state == PlayerState.DEAD or state == PlayerState.PETRIFY or state == PlayerState.HURT:
 		return
 
-	if jump_buffer_timer > 0.0 and coyote_timer > 0.0 and not has_jumped:
-		velocity.y = JUMP_VELOCITY
-		jump_buffer_timer = 0.0
-		coyote_timer = 0.0
-		has_jumped = true
-		state = PlayerState.JUMP
-		return
-
+	# A lógica de impulso do pulo agora ocorre em _physics_process
 	if not is_on_floor():
 		state = PlayerState.JUMP
 		return

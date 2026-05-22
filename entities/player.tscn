@@ -126,7 +126,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 7.0
+"speed": 9.0
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1984505922 groups=["player"]]
@@ -140,7 +140,7 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_6nm46")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.28466767
+frame_progress = 0.7840665
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1342310926]
 stream = ExtResource("3_e4p34")

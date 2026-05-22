@@ -526,7 +526,22 @@ grow_horizontal = 0
 theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
 theme_override_fonts/font = ExtResource("9_44yx7")
 theme_override_font_sizes/font_size = 5
-text = "Estátuas: 0/2"
+text = "EstÃ¡tuas: 0/2"
+
+[node name="VidasLabel" type="Label" parent="CanvasLayer/HUD" unique_id=111222330]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -447.0
+offset_top = 46.0
+offset_right = -356.0
+offset_bottom = 54.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.84705883, 0.84705883, 0.84705883, 1)
+theme_override_fonts/font = ExtResource("8_vc1y7")
+theme_override_font_sizes/font_size = 7
+text = "Vidas: 3"
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=956716925]
 visible = false
@@ -547,3 +562,4 @@ position = Vector2(244, -71)
 amount = 50
 lifetime = 10.41
 process_material = SubResource("ParticleProcessMaterial_d3jkd")
+

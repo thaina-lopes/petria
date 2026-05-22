@@ -191,7 +191,6 @@ parameters/looping = true
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1901676153]
 
 [node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=832915913]
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

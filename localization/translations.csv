@@ -1,4 +1,4 @@
-﻿id;pt;en
+id;pt;en
 KEY_FINISH_TITLE;Você concluiu Petria!;You completed Petria!
 KEY_THANK_YOU;Obrigada por jogar meu joguinho <3;Thanks for playing my little game <3
 KEY_TIME;Tempo:;Time:
@@ -9,7 +9,7 @@ KEY_STATUES;Estátuas: %s;Statues: %s
 KEY_VITALITY;Vitalidade: %s;Vitality: %s
 KEY_RESTART;REINICIAR;RESTART
 KEY_PETRIFY;PETRIFICAR;PETRIFY
-;;
+KEY_DRAG_TO_MOVE;Arraste para mover;Drag to move
 ;;
 ;;
 ;;

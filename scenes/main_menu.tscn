@@ -189,7 +189,6 @@ autoplay = true
 parameters/looping = true
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1901676153]
-visible = false
 
 [node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=832915913]
 anchors_preset = 15

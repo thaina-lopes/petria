@@ -5,6 +5,7 @@ var mortes := 0
 var vidas := 3
 var jogo_ativo := false
 var jogo_foi_iniciado := false
+var tutorial_movimento_visto := false
 
 var canvas_mod: CanvasModulate
 

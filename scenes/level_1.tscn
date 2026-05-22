@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://5rpdrtg45w3a"]
 
-[ext_resource type="Script" path="res://scripts/level_1.gd" id="1_15mv3"]
+[ext_resource type="Script" uid="uid://b4241wxfwngwg" path="res://scripts/level_1.gd" id="1_15mv3"]
 [ext_resource type="Texture2D" uid="uid://c1i0ppv13wvhq" path="res://assets/backback.png" id="2_e3sih"]
 [ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="3_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://bh4rd27jkm8nh" path="res://scenes/fragment.tscn" id="4_2os1m"]
@@ -657,7 +657,7 @@ script = ExtResource("9_2cbcq")
 
 [node name="R" type="TouchScreenButton" parent="Controls" unique_id=2081375591]
 modulate = Color(1, 1, 1, 0.60784316)
-position = Vector2(443.00003, 1.1920929e-07)
+position = Vector2(443.00003, 1.9999999)
 scale = Vector2(2.3, 2.3)
 texture_normal = ExtResource("10_2cbcq")
 texture_pressed = ExtResource("9_2y5yt")

@@ -122,6 +122,12 @@ func _physics_process(delta: float) -> void:
 		velocity += grav * delta
 
 	var direction := Input.get_axis("move_left", "move_right")
+	
+	# Sobrescreve a direção com o joystick virtual, caso esteja em uso
+	var virtual_joystick = get_tree().get_first_node_in_group("virtual_joystick")
+	if virtual_joystick and virtual_joystick.is_visible_in_tree() and virtual_joystick.output != 0.0:
+		direction = virtual_joystick.output
+
 	update_flip(direction)
 	update_horizontal_movement(direction, delta)
 	
@@ -264,18 +270,37 @@ func update_flip(direction: float) -> void:
 
 
 func update_horizontal_movement(direction: float, delta: float) -> void:
-	if direction != 0:
-		velocity.x = move_toward(
-			velocity.x,
-			direction * SPEED,
-			ACCELERATION * delta
-		)
+	if DisplayServer.is_touchscreen_available():
+		# --- MOBILE: Movimentação Arcade Instantânea ---
+		# O dedo do jogador (que arrasta no joystick) dita a velocidade perfeitamente
+		if direction != 0:
+			velocity.x = direction * SPEED
+		else:
+			# Pequena desaceleração rápida ao invés de frear a seco em 1 frame
+			velocity.x = move_toward(velocity.x, 0, FRICTION * 1.5 * delta)
 	else:
-		velocity.x = move_toward(
-			velocity.x,
-			0,
-			FRICTION * delta
-		)
+		# --- DESKTOP: Movimentação com Inércia e Aceleração ---
+		if direction != 0:
+			var target_speed = direction * SPEED
+			var current_accel = ACCELERATION
+			
+			# Melhoria de responsividade 
+			if sign(direction) != sign(velocity.x) and velocity.x != 0:
+				current_accel = ACCELERATION * 3.0 # Turnaround rápido
+			elif abs(velocity.x) < 15.0:
+				current_accel = ACCELERATION * 3.5 # Arranque forte
+				
+			velocity.x = move_toward(
+				velocity.x,
+				target_speed,
+				current_accel * delta
+			)
+		else:
+			velocity.x = move_toward(
+				velocity.x,
+				0,
+				FRICTION * delta
+			)
 
 
 func update_state(direction: float) -> void:

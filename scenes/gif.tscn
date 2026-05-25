@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b6ch7yrgnxo0s"]
+
+[ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="1_gxcwk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0batr"]
+size = Vector2(146.75, 20)
+
+[node name="Gif" type="Node2D" unique_id=2008450646]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1544280432]
+
+[node name="Background" type="ColorRect" parent="CanvasLayer" unique_id=1649043805]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = 1.0
+offset_right = -10.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.043137256, 0.105882354, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CanvasLayer" unique_id=944633020]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/StaticBody2D" unique_id=264433129]
+position = Vector2(247, 150)
+shape = SubResource("RectangleShape2D_0batr")
+
+[node name="Player" parent="CanvasLayer" unique_id=1984505922 instance=ExtResource("1_gxcwk")]
+z_index = 5
+position = Vector2(240, 124)

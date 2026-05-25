@@ -16,6 +16,7 @@ enum PlayerState {
 const SPEED = 100.0
 const JUMP_VELOCITY = -300.0
 const MAX_ESTATUAS = 2
+const DESTROY_COOLDOWN = 0.5
 const FALL_LIMIT_Y = 320.0
 const COYOTE_TIME = 0.15
 const JUMP_BUFFER_TIME = 0.1
@@ -27,11 +28,13 @@ var state: PlayerState = PlayerState.IDLE
 var coyote_timer = 0.0
 var jump_buffer_timer = 0.0
 var has_jumped = false
+var destroy_cd_timer = 0.0
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sfx: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 var sfx_hurt: AudioStreamPlayer2D
+var sfx_destroy: AudioStreamPlayer2D
 
 func _ready() -> void:
 	var light = PointLight2D.new()
@@ -59,7 +62,14 @@ func _ready() -> void:
 	sfx_hurt.volume_db = -5.0
 	add_child(sfx_hurt)
 
+	sfx_destroy = AudioStreamPlayer2D.new()
+	sfx_destroy.stream = preload("res://sound/petrify.mp3")
+	sfx_destroy.volume_db = -5.0
+	add_child(sfx_destroy)
+
 func _physics_process(delta: float) -> void:
+	destroy_cd_timer = max(0.0, destroy_cd_timer - delta)
+
 	if global_position.y > FALL_LIMIT_Y:
 		if state != PlayerState.DEAD:
 			GameManager.vidas = 0
@@ -77,7 +87,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("petrify"):
 		criar_estatua()
 		return
-		
+
+	if Input.is_action_just_pressed("destroy_statue"):
+		destruir_estatua()
+		return
+
 	if not pode_mover and state != PlayerState.HURT:
 		return
 
@@ -239,6 +253,48 @@ func criar_estatua() -> void:
 
 	pode_mover = true
 	state = PlayerState.IDLE
+
+
+func destruir_estatua() -> void:
+	# Cooldown: evita destruir várias estátuas em sequência.
+	if destroy_cd_timer > 0.0:
+		return
+
+	# Nada a restaurar: o jogador ainda tem todas as estátuas disponíveis.
+	if estatuas_criadas <= 0:
+		return
+
+	var statues := get_tree().get_nodes_in_group("statues")
+	if statues.is_empty():
+		return
+
+	# Destrói a estátua mais próxima do jogador.
+	var alvo: Node2D = null
+	var menor_dist := INF
+	for s in statues:
+		var d := global_position.distance_to(s.global_position)
+		if d < menor_dist:
+			menor_dist = d
+			alvo = s
+
+	if alvo == null:
+		return
+
+	destroy_cd_timer = DESTROY_COOLDOWN
+
+	# Restaura o contador imediatamente (libera 1 estátua para reuso).
+	estatuas_criadas -= 1
+	estatua_criada.emit(estatuas_criadas)
+
+	sfx_destroy.play()
+
+	# Evita que a mesma estátua seja selecionada de novo enquanto se desfaz.
+	alvo.remove_from_group("statues")
+
+	var ap: AnimationPlayer = alvo.get_node("AnimationPlayer")
+	ap.play("destruir")
+	await ap.animation_finished
+	alvo.queue_free()
 
 
 func update_flip(direction: float) -> void:

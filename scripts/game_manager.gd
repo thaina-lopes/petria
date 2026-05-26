@@ -5,6 +5,7 @@ var mortes := 0
 var vidas := 3
 var jogo_ativo := false
 var jogo_foi_iniciado := false
+var tutorial_movimento_visto := false
 
 var canvas_mod: CanvasModulate
 
@@ -48,7 +49,7 @@ func _process(delta: float) -> void:
 		if scene_name == "MainMenu" or scene_name == "FinalScene":
 			canvas_mod.color = Color(1, 1, 1) # Remove o filtro
 		else:
-			canvas_mod.color = Color(0.25, 0.25, 0.45) # Aplica o filtro mágico
+			canvas_mod.color = Color(0.4, 0.4, 0.6) # Aplica o filtro mágico
 
 func formatar_tempo() -> String:
 	var total_segundos := int(tempo_total)

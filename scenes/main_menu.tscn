@@ -208,28 +208,28 @@ libraries/ = SubResource("AnimationLibrary_rtw2f")
 
 [node name="Label" type="Label" parent="." unique_id=1928279313]
 layout_mode = 0
-offset_left = 36.0
+offset_left = 35.0
 offset_top = 202.0
-offset_right = 94.0
+offset_right = 119.0
 offset_bottom = 223.0
-theme_override_colors/font_color = Color(0.7677168, 0.5779946, 0.8192375, 1)
+theme_override_colors/font_color = Color(0.92941177, 0.4392157, 0.8509804, 1)
 theme_override_colors/font_outline_color = Color(0.34509805, 0.19215687, 0.3764706, 0.85882354)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_8ln24")
 theme_override_font_sizes/font_size = 18
-text = "Reinicia"
+text = "KEY_RESTART"
 
 [node name="Label2" type="Label" parent="." unique_id=834479090]
 layout_mode = 0
-offset_left = 36.0
-offset_top = 233.0
-offset_right = 100.0
-offset_bottom = 254.0
-theme_override_colors/font_color = Color(0.7677168, 0.5779946, 0.8192375, 1)
+offset_left = 35.0
+offset_top = 234.0
+offset_right = 117.0
+offset_bottom = 255.0
+theme_override_colors/font_color = Color(0.92941177, 0.4392157, 0.8509804, 1)
 theme_override_colors/font_outline_color = Color(0.34509805, 0.19215687, 0.3764706, 0.85882354)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_8ln24")
 theme_override_font_sizes/font_size = 18
-text = "Petrifica"
+text = "KEY_PETRIFY"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

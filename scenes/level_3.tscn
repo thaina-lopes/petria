@@ -5,15 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="2_wae8j"]
 [ext_resource type="PackedScene" uid="uid://bh4rd27jkm8nh" path="res://scenes/fragment.tscn" id="3_ha73p"]
 [ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://sound/music.mp3" id="5_hhfj6"]
-[ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="6_ax3dk"]
 [ext_resource type="Texture2D" uid="uid://bstpvwrs1dokv" path="res://assets/tileset/Tileset.png" id="6_ha73p"]
 [ext_resource type="Texture2D" uid="uid://b1s8wulj1sn8q" path="res://assets/tileset/tiledeath.png" id="7_vcx5n"]
 [ext_resource type="Texture2D" uid="uid://hebu7ox50dx1" path="res://assets/tileset/decorations.png" id="8_ha73p"]
 [ext_resource type="Texture2D" uid="uid://c4gl4afvmgkh5" path="res://assets/tileset/cogu.png" id="10_k5r18"]
 [ext_resource type="Texture2D" uid="uid://cyls1hidinvxe" path="res://assets/constrols/R.png" id="10_q7pjq"]
 [ext_resource type="Script" uid="uid://d2db7h1u42qhi" path="res://scripts/controls.gd" id="10_wa6ex"]
+[ext_resource type="Texture2D" uid="uid://c7xdn8jwms80i" path="res://assets/HUD/HUUDH.png" id="11_w5nkq"]
 [ext_resource type="Texture2D" uid="uid://dtpl238dyjbcr" path="res://assets/constrols/RR.png" id="11_wa6ex"]
 [ext_resource type="Texture2D" uid="uid://3l2x6tesphx0" path="res://assets/constrols/E.png" id="12_sx8yt"]
+[ext_resource type="FontFile" uid="uid://5objkv8d0g6l" path="res://fonts/PixelOperator-Bold.ttf" id="12_w5nkq"]
 [ext_resource type="Texture2D" uid="uid://2vr35pwre3ol" path="res://assets/constrols/EE.png" id="13_sx8yt"]
 [ext_resource type="Texture2D" uid="uid://xt50dk5emure" path="res://assets/constrols/LEFT.png" id="15_k5r18"]
 [ext_resource type="Texture2D" uid="uid://by75gifvxc5j" path="res://assets/constrols/LEFT_press.png" id="16_w5nkq"]
@@ -744,9 +745,9 @@ tile_set = SubResource("TileSet_vcx5n")
 tile_map_data = PackedByteArray("AAAUAAIAAAAHAAAAAAAVAAIAAAAIAAAAAAAVAAMAAAAIAAEAAAARAAIAAAAFAAAAAAADAAgAAAAHAAYAAAAEAAgAAAAIAAYAAAACAA0AAAAGAAYAAAAGAA0AAAAHAAYAAAAbAAIAAAACAAIAAAAFAAoAAAAOAAAAAAAYAAcAAAAKAAAAAAACAAIAAAAAAAIAAAAHAA0AAQADAAIAAAAQAAwAAQADAAEAAAAaAAIAAAANAAIAAAAaAAMAAAANAAMAAAAaAAQAAAANAAQAAAAbAAMAAAAOAAMAAAAbAAQAAAAOAAQAAAA=")
 tile_set = SubResource("TileSet_ax3dk")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=594664307]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=655050524]
 
-[node name="HUD" type="Control" parent="CanvasLayer" unique_id=1110296774]
+[node name="HUD" type="Control" parent="CanvasLayer" unique_id=555125175]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -755,48 +756,48 @@ offset_top = 1.0
 offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
-[node name="FragmentsLabel" type="Label" parent="CanvasLayer/HUD" unique_id=166837135]
-layout_mode = 1
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD" unique_id=762945775]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -18.0
+offset_right = 89.0
+offset_bottom = 207.0
+texture = ExtResource("11_w5nkq")
+stretch_mode = 2
+
+[node name="LifeLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1067193360]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 18.0
+offset_right = 45.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
+theme_override_fonts/font = ExtResource("12_w5nkq")
+theme_override_font_sizes/font_size = 8
+text = " x3"
+
+[node name="FragmentsLabel" type="Label" parent="CanvasLayer/HUD" unique_id=11465575]
+layout_mode = 0
 offset_left = 33.0
 offset_top = 30.0
 offset_right = 76.0
-offset_bottom = 38.0
-theme_override_colors/font_color = Color(0.8474744, 0.84747446, 0.8474743, 1)
-theme_override_fonts/font = ExtResource("6_ax3dk")
-theme_override_font_sizes/font_size = 7
-text = "Fragmentos: 0/2"
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
+theme_override_fonts/font = ExtResource("12_w5nkq")
+theme_override_font_sizes/font_size = 8
+text = "0/2"
 
-[node name="EstatuesLabel" type="Label" parent="CanvasLayer/HUD" unique_id=627455419]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -447.0
-offset_top = 38.0
-offset_right = -356.0
-offset_bottom = 46.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.84705883, 0.84705883, 0.84705883, 1)
-theme_override_fonts/font = ExtResource("6_ax3dk")
-theme_override_font_sizes/font_size = 7
-text = "EstÃ¡tuas: 0/2"
-
-[node name="VidasLabel" type="Label" parent="CanvasLayer/HUD" unique_id=476016495]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -447.0
-offset_top = 46.0
-offset_right = -356.0
-offset_bottom = 54.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.84705883, 0.84705883, 0.84705883, 1)
-theme_override_fonts/font = ExtResource("6_ax3dk")
-theme_override_font_sizes/font_size = 7
-text = "Vidas: 3"
+[node name="EstatuesLabel" type="Label" parent="CanvasLayer/HUD" unique_id=265916565]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 42.0
+offset_right = 44.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
+theme_override_fonts/font = ExtResource("12_w5nkq")
+theme_override_font_sizes/font_size = 8
+text = "0/2"
 
 [node name="Controls" type="CanvasLayer" parent="." unique_id=2037939111]
 script = ExtResource("10_wa6ex")

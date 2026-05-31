@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 		if scene_name != "MainMenu" and scene_name != "FinalScene" and not jogo_foi_iniciado:
 			iniciar_jogo()
 			
-		if scene_name == "MainMenu" or scene_name == "FinalScene":
+		if scene_name == "MainMenu" or scene_name == "FinalScene" or scene_name == "History":
 			canvas_mod.color = Color(1, 1, 1) # Remove o filtro
 		else:
 			canvas_mod.color = Color(0.4, 0.4, 0.6) # Aplica o filtro mágico

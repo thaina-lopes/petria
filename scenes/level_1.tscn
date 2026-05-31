@@ -5,13 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="3_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://bh4rd27jkm8nh" path="res://scenes/fragment.tscn" id="4_2os1m"]
 [ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://sound/music.mp3" id="5_go7sj"]
-[ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="6_7gny6"]
 [ext_resource type="Texture2D" uid="uid://hebu7ox50dx1" path="res://assets/tileset/decorations.png" id="7_15mv3"]
 [ext_resource type="Texture2D" uid="uid://bstpvwrs1dokv" path="res://assets/tileset/Tileset.png" id="8_6dial"]
 [ext_resource type="Texture2D" uid="uid://c4gl4afvmgkh5" path="res://assets/tileset/cogu.png" id="8_isj1j"]
 [ext_resource type="Script" uid="uid://d2db7h1u42qhi" path="res://scripts/controls.gd" id="9_2cbcq"]
 [ext_resource type="Texture2D" uid="uid://cyls1hidinvxe" path="res://assets/constrols/R.png" id="9_2y5yt"]
+[ext_resource type="Texture2D" uid="uid://c7xdn8jwms80i" path="res://assets/HUD/HUUDH.png" id="9_so66j"]
 [ext_resource type="Texture2D" uid="uid://dtpl238dyjbcr" path="res://assets/constrols/RR.png" id="10_2cbcq"]
+[ext_resource type="FontFile" uid="uid://5objkv8d0g6l" path="res://fonts/PixelOperator-Bold.ttf" id="10_so66j"]
 [ext_resource type="Texture2D" uid="uid://3l2x6tesphx0" path="res://assets/constrols/E.png" id="11_go7sj"]
 [ext_resource type="Texture2D" uid="uid://2vr35pwre3ol" path="res://assets/constrols/EE.png" id="12_2cbcq"]
 [ext_resource type="Texture2D" uid="uid://xt50dk5emure" path="res://assets/constrols/LEFT.png" id="14_2cbcq"]
@@ -644,46 +645,47 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD" unique_id=763233853]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -18.0
+offset_right = 89.0
+offset_bottom = 207.0
+texture = ExtResource("9_so66j")
+stretch_mode = 2
+
+[node name="LifeLabel" type="Label" parent="CanvasLayer/HUD" unique_id=2042080965]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 18.0
+offset_right = 45.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
+theme_override_fonts/font = ExtResource("10_so66j")
+theme_override_font_sizes/font_size = 8
+text = " x3"
+
 [node name="FragmentsLabel" type="Label" parent="CanvasLayer/HUD" unique_id=773481870]
-layout_mode = 1
+layout_mode = 0
 offset_left = 33.0
 offset_top = 30.0
 offset_right = 76.0
-offset_bottom = 38.0
-theme_override_colors/font_color = Color(0.8474744, 0.84747446, 0.8474743, 1)
-theme_override_fonts/font = ExtResource("6_7gny6")
-theme_override_font_sizes/font_size = 7
-text = "Fragmentos: 0/2"
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
+theme_override_fonts/font = ExtResource("10_so66j")
+theme_override_font_sizes/font_size = 8
+text = "0/2"
 
 [node name="EstatuesLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1038322028]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -447.0
-offset_top = 38.0
-offset_right = -356.0
-offset_bottom = 46.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.84705883, 0.84705883, 0.84705883, 1)
-theme_override_fonts/font = ExtResource("6_7gny6")
-theme_override_font_sizes/font_size = 7
-text = "EstÃ¡tuas: 0/2"
-
-[node name="VidasLabel" type="Label" parent="CanvasLayer/HUD" unique_id=54900575]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -447.0
-offset_top = 46.0
-offset_right = -356.0
-offset_bottom = 54.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.84705883, 0.84705883, 0.84705883, 1)
-theme_override_fonts/font = ExtResource("6_7gny6")
-theme_override_font_sizes/font_size = 7
-text = "Vidas: 3"
+layout_mode = 0
+offset_left = 33.0
+offset_top = 42.0
+offset_right = 44.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
+theme_override_fonts/font = ExtResource("10_so66j")
+theme_override_font_sizes/font_size = 8
+text = "0/2"
 
 [node name="Controls" type="CanvasLayer" parent="." unique_id=1806421750]
 script = ExtResource("9_2cbcq")

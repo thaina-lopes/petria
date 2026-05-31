@@ -13,7 +13,7 @@ enum PlayerState {
 	HURT
 }
 
-const SPEED = 120.0
+const SPEED = 110.0
 const ACCELERATION = 900.0
 const FRICTION = 1200.0
 const JUMP_VELOCITY = -300.0

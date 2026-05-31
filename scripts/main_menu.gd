@@ -27,7 +27,7 @@ func _on_start_button_pressed() -> void:
 	fade_out_musica()
 
 	await $TransitionLayer/AnimationPlayer.animation_finished
-	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/history.tscn")
 
 func fade_in_musica() -> void:
 	var tween = create_tween()

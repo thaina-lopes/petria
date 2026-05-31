@@ -40,7 +40,7 @@ func _on_estatua_criada(qtd) -> void:
 	estatuas_usadas = qtd
 	atualizar_hud()
 
-func _on_vida_alterada(qtd) -> void:
+func _on_vida_alterada(_qtd) -> void:
 	atualizar_hud()
 
 func _on_fragmento_coletado() -> void:
@@ -70,11 +70,13 @@ func _on_player_morreu() -> void:
 
 func atualizar_hud() -> void:
 	if has_node("CanvasLayer/HUD/FragmentsLabel"):
-		$CanvasLayer/HUD/FragmentsLabel.text = tr("KEY_CRYSTALS") % ("%d/%d" % [coletados, total_fragmentos])
+		$CanvasLayer/HUD/FragmentsLabel.text = "%d/%d" % [coletados, total_fragmentos]
 	if has_node("CanvasLayer/HUD/EstatuesLabel"):
-		$CanvasLayer/HUD/EstatuesLabel.text = tr("KEY_STATUES") % ("%d/%d" % [estatuas_usadas, total_estatuas])
-	if has_node("CanvasLayer/HUD/VidasLabel"):
-		$CanvasLayer/HUD/VidasLabel.text = tr("KEY_VITALITY") % str(GameManager.vidas)
+		$CanvasLayer/HUD/EstatuesLabel.text = "%d/%d" % [estatuas_usadas, total_estatuas]
+	if has_node("CanvasLayer/HUD/LifeLabel"):
+		$CanvasLayer/HUD/LifeLabel.text = "x%d" % GameManager.vidas
+	elif has_node("CanvasLayer/HUD/VidasLabel"):
+		$CanvasLayer/HUD/VidasLabel.text = "x%d" % GameManager.vidas
 
 func finalizar_fase() -> void:
 	if has_node("TransitionLayer/AnimationPlayer"):

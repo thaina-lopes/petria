@@ -8,10 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://hebu7ox50dx1" path="res://assets/tileset/decorations.png" id="7_ne2mo"]
 [ext_resource type="Texture2D" uid="uid://bstpvwrs1dokv" path="res://assets/tileset/Tileset.png" id="8_6cvei"]
 [ext_resource type="Texture2D" uid="uid://c4gl4afvmgkh5" path="res://assets/tileset/cogu.png" id="8_k22d5"]
-[ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="9_6cvei"]
 [ext_resource type="Texture2D" uid="uid://cyls1hidinvxe" path="res://assets/constrols/R.png" id="9_7qsfm"]
 [ext_resource type="Script" uid="uid://d2db7h1u42qhi" path="res://scripts/controls.gd" id="9_bv48q"]
+[ext_resource type="Texture2D" uid="uid://c7xdn8jwms80i" path="res://assets/HUD/HUUDH.png" id="9_k6a82"]
 [ext_resource type="Texture2D" uid="uid://dtpl238dyjbcr" path="res://assets/constrols/RR.png" id="10_bv48q"]
+[ext_resource type="FontFile" uid="uid://5objkv8d0g6l" path="res://fonts/PixelOperator-Bold.ttf" id="10_k6a82"]
 [ext_resource type="Texture2D" uid="uid://3l2x6tesphx0" path="res://assets/constrols/E.png" id="11_k22d5"]
 [ext_resource type="Texture2D" uid="uid://2vr35pwre3ol" path="res://assets/constrols/EE.png" id="12_k22d5"]
 [ext_resource type="Texture2D" uid="uid://xt50dk5emure" path="res://assets/constrols/LEFT.png" id="14_k6a82"]
@@ -1083,9 +1084,9 @@ tile_set = SubResource("TileSet_172wr")
 tile_map_data = PackedByteArray("AAAGAAwAAAANAA4AAAADAAwAAAADAAIAAAADAA0AAAADAAMAAAADAA4AAAADAAQAAAAEAAwAAAAEAAIAAAAEAA0AAAAEAAMAAAAEAA4AAAAEAAQAAAAFAAwAAAADAAIAAAA=")
 tile_set = SubResource("TileSet_hey2k")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1144227137]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=952602722]
 
-[node name="HUD" type="Control" parent="CanvasLayer" unique_id=298914590]
+[node name="HUD" type="Control" parent="CanvasLayer" unique_id=1687041725]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1096,46 +1097,47 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="FragmentsLabel" type="Label" parent="CanvasLayer/HUD" unique_id=656879418]
-layout_mode = 1
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD" unique_id=2012635572]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -18.0
+offset_right = 89.0
+offset_bottom = 207.0
+texture = ExtResource("9_k6a82")
+stretch_mode = 2
+
+[node name="LifeLabel" type="Label" parent="CanvasLayer/HUD" unique_id=343460026]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 18.0
+offset_right = 45.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
+theme_override_fonts/font = ExtResource("10_k6a82")
+theme_override_font_sizes/font_size = 8
+text = " x3"
+
+[node name="FragmentsLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1906860693]
+layout_mode = 0
 offset_left = 33.0
 offset_top = 30.0
 offset_right = 76.0
-offset_bottom = 38.0
-theme_override_colors/font_color = Color(0.8474744, 0.84747446, 0.8474743, 1)
-theme_override_fonts/font = ExtResource("9_6cvei")
-theme_override_font_sizes/font_size = 7
-text = "Fragmentos: 0/2"
+offset_bottom = 39.0
+theme_override_colors/font_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
+theme_override_fonts/font = ExtResource("10_k6a82")
+theme_override_font_sizes/font_size = 8
+text = "0/2"
 
-[node name="EstatuesLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1360477205]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -447.0
-offset_top = 38.0
-offset_right = -356.0
-offset_bottom = 46.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.84705883, 0.84705883, 0.84705883, 1)
-theme_override_fonts/font = ExtResource("9_6cvei")
-theme_override_font_sizes/font_size = 7
-text = "EstÃ¡tuas: 0/2"
-
-[node name="VidasLabel" type="Label" parent="CanvasLayer/HUD" unique_id=1363066415]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -447.0
-offset_top = 46.0
-offset_right = -356.0
-offset_bottom = 54.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(0.84705883, 0.84705883, 0.84705883, 1)
-theme_override_fonts/font = ExtResource("9_6cvei")
-theme_override_font_sizes/font_size = 7
-text = "Vidas: 3"
+[node name="EstatuesLabel" type="Label" parent="CanvasLayer/HUD" unique_id=567565561]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 42.0
+offset_right = 44.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.17641911, 0.17641908, 0.17641908, 1)
+theme_override_fonts/font = ExtResource("10_k6a82")
+theme_override_font_sizes/font_size = 8
+text = "0/2"
 
 [node name="Controls" type="CanvasLayer" parent="." unique_id=880952010]
 script = ExtResource("9_bv48q")

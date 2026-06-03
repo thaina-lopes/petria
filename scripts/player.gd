@@ -329,6 +329,12 @@ func update_animation() -> void:
 		PlayerState.JUMP:
 			if anim.animation != "jump":
 				anim.play("jump")
+			
+			anim.pause()
+			if velocity.y < 0:
+				anim.frame = 0
+			else:
+				anim.frame = 1
 		PlayerState.PETRIFY:
 			if anim.animation != "petrify":
 				anim.play("petrify")

@@ -28,6 +28,10 @@ region = Rect2(96, 0, 32, 32)
 atlas = ExtResource("2_e4p34")
 region = Rect2(64, 64, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rie4"]
+atlas = ExtResource("2_e4p34")
+region = Rect2(96, 64, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6nm46"]
 atlas = ExtResource("2_e4p34")
 region = Rect2(0, 160, 32, 32)
@@ -86,6 +90,9 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0i614")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rie4")
 }],
 "loop": true,
 "name": &"jump",
@@ -141,7 +148,8 @@ z_index = 1
 sprite_frames = SubResource("SpriteFrames_6nm46")
 animation = &"walk"
 autoplay = "idle"
-frame_progress = 0.7840665
+frame = 3
+frame_progress = 0.16556011
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1342310926]
 stream = ExtResource("3_e4p34")

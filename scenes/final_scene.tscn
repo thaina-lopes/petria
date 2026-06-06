@@ -707,6 +707,7 @@ lifetime = 10.41
 process_material = SubResource("ParticleProcessMaterial_egufw")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1860264744]
+bus = &"Music"
 stream = ExtResource("4_egufw")
 volume_db = -25.0
 autoplay = true

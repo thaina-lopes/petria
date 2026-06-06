@@ -1064,6 +1064,7 @@ z_index = -1
 position = Vector2(75, 216)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=2146839060]
+bus = &"Music"
 stream = ExtResource("6_y0kc7")
 volume_db = -25.0
 autoplay = true

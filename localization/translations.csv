@@ -10,7 +10,13 @@ KEY_VITALITY;Vitalidade: %s;Vitality: %s
 KEY_RESTART;REINICIAR;RESTART
 KEY_PETRIFY;PETRIFICAR;PETRIFY
 KEY_DRAG_TO_MOVE;Arraste para mover;Drag to move
-;;
-;;
-;;
-;;
+KEY_SETTINGS;Configurações;Settings
+KEY_DISABLE_MUSIC;Desativar música;Disable music
+KEY_DISABLE_SFX;Desativar efeitos sonoros;Disable sound effects
+KEY_CONTROLS_TITLE;Controles:;Controls:
+KEY_ACTION_MOVE;Movimentação:;Movement:
+KEY_ACTION_JUMP;Pular:;Jump:
+KEY_ACTION_PETRIFY;Petrificar:;Petrify:
+KEY_ACTION_RESTART;Reiniciar fase:;Restart level:
+KEY_ACTION_MENU;Menu:;Menu:
+KEY_START;Pressione qualquer tecla para iniciar;Press any key to start

@@ -59,6 +59,7 @@ func _ready() -> void:
 	sfx_hurt = AudioStreamPlayer2D.new()
 	sfx_hurt.stream = preload("res://sound/hurt.ogg")
 	sfx_hurt.volume_db = -5.0
+	sfx_hurt.bus = "SFX"
 	add_child(sfx_hurt)
 
 func _physics_process(delta: float) -> void:

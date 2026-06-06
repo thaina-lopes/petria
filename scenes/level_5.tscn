@@ -924,6 +924,7 @@ scale = Vector2(1.0091668, 1)
 position = Vector2(441, 134)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=768322121]
+bus = &"Music"
 stream = ExtResource("6_68hud")
 volume_db = -25.0
 autoplay = true

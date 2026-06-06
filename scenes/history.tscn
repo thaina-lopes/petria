@@ -122,7 +122,7 @@ offset_left = 138.0
 offset_top = 198.0
 offset_right = 396.0
 offset_bottom = 251.0
-theme_override_colors/default_color = Color(0.11764706, 0.3254902, 0.22352941, 1)
+theme_override_colors/default_color = Color(0.09803922, 0.09803922, 0.2, 1)
 theme_override_constants/line_separation = 3
 theme_override_fonts/normal_font = ExtResource("5_ntjcj")
 theme_override_font_sizes/normal_font_size = 9
@@ -152,10 +152,12 @@ libraries/ = SubResource("AnimationLibrary_4l1bj")
 stream = ExtResource("5_asvoj")
 volume_db = -40.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="Music2" type="AudioStreamPlayer" parent="." unique_id=1982846979]
 stream = ExtResource("6_4pf11")
 volume_db = -30.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true

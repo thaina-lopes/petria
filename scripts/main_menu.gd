@@ -13,6 +13,8 @@ func _ready() -> void:
 	fade_in_musica()
 	
 	$StartButton.grab_focus()
+	
+	OptionsMenu.visibility_changed.connect(func(): $SettingsButton.button_pressed = OptionsMenu.visible)
 
 func _on_start_button_pressed() -> void:
 	if iniciando_jogo:
@@ -36,3 +38,9 @@ func fade_in_musica() -> void:
 func fade_out_musica() -> void:
 	var tween = create_tween()
 	tween.tween_property($Music, "volume_db", -100.0, 0.5)
+
+func _on_settings_button_pressed() -> void:
+	if OptionsMenu.visible:
+		OptionsMenu.hide_menu()
+	else:
+		OptionsMenu.show_menu()

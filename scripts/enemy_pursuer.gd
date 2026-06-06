@@ -51,6 +51,7 @@ func _setup_nodes() -> void:
 	var sfx_death = AudioStreamPlayer2D.new()
 	sfx_death.stream = preload("res://sound/splash.ogg")
 	sfx_death.name = "SfxDeath"
+	sfx_death.bus = "SFX"
 	add_child(sfx_death)
 
 func _setup_shader() -> void:

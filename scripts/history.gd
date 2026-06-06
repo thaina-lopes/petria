@@ -30,7 +30,7 @@ func _ready() -> void:
 	if font:
 		arrow_label.add_theme_font_override("font", font)
 	arrow_label.add_theme_font_size_override("font_size", 11)
-	arrow_label.add_theme_color_override("font_color", Color("#1e5339"))
+	arrow_label.add_theme_color_override("font_color", Color("#3d2947"))
 	add_child(arrow_label)
 	# Posiciona no canto inferior direito da caixa de texto
 	arrow_label.position = Vector2(rich_text_label.position.x + rich_text_label.size.x - 10, rich_text_label.position.y + rich_text_label.size.y - 15)

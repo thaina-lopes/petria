@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d18u6qsn8d2kc"]
 
 [ext_resource type="Script" uid="uid://cyiybh0d7hxgd" path="res://scripts/main_menu.gd" id="1_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://bjt2xgc5yhyeu" path="res://telainicial03.png" id="2_oa1go"]
 [ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="3_8ln24"]
+[ext_resource type="Texture2D" uid="uid://cneojdm5tfm11" path="res://assets/img_back.png" id="3_tbmy8"]
 [ext_resource type="AudioStream" uid="uid://dn6k2g1wd8vao" path="res://sound/start.mp3" id="4_wu84c"]
 [ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://sound/music.mp3" id="5_8ln24"]
 [ext_resource type="Texture2D" uid="uid://vhpl5m1rrcrr" path="res://assets/HUD/conf_icon.png" id="6_conficon"]
@@ -99,7 +99,7 @@ offset_right = 481.0
 offset_bottom = 270.0
 script = ExtResource("1_bqqt6")
 
-[node name="Background" type="TextureRect" parent="." unique_id=854013938]
+[node name="Background" type="TextureRect" parent="." unique_id=1635230918]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,7 +111,7 @@ offset_bottom = 1440.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.16, 0.16)
-texture = ExtResource("2_oa1go")
+texture = ExtResource("3_tbmy8")
 expand_mode = 1
 stretch_mode = 6
 
@@ -123,13 +123,13 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -125.5
-offset_top = -32.0
+offset_top = -28.0
 offset_right = 125.5
-offset_bottom = -5.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.57053846, 0.4045914, 0.65572554, 1)
-theme_override_colors/font_focus_color = Color(0.5686275, 0.40392157, 0.654902, 1)
+theme_override_colors/font_color = Color(0.9607843, 0.60784316, 0.92156863, 1)
+theme_override_colors/font_focus_color = Color(0.99607843, 0.6784314, 0.9490196, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0)
@@ -137,8 +137,10 @@ theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
 theme_override_fonts/font = ExtResource("3_8ln24")
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_8ln24")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tbmy8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tbmy8")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jk1qb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_tbmy8")
 text = "KEY_START"
@@ -160,7 +162,6 @@ autoplay = true
 parameters/looping = true
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1901676153]
-visible = false
 
 [node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=832915913]
 anchors_preset = 15
@@ -180,12 +181,12 @@ libraries/ = SubResource("AnimationLibrary_rtw2f")
 
 [node name="Label" type="Label" parent="." unique_id=1928279313]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 183.0
-offset_right = 119.0
-offset_bottom = 204.0
-theme_override_colors/font_color = Color(0.92941177, 0.4392157, 0.8509804, 1)
-theme_override_colors/font_outline_color = Color(0.34509805, 0.19215687, 0.3764706, 0.85882354)
+offset_left = 54.0
+offset_top = 191.0
+offset_right = 138.0
+offset_bottom = 212.0
+theme_override_colors/font_color = Color(0.9607843, 0.60784316, 0.92156863, 1)
+theme_override_colors/font_outline_color = Color(0.2293627, 0.12459765, 0.25707987, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_8ln24")
 theme_override_font_sizes/font_size = 18
@@ -193,12 +194,12 @@ text = "KEY_RESTART"
 
 [node name="Label2" type="Label" parent="." unique_id=834479090]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 214.0
-offset_right = 117.0
-offset_bottom = 235.0
-theme_override_colors/font_color = Color(0.92941177, 0.4392157, 0.8509804, 1)
-theme_override_colors/font_outline_color = Color(0.34509805, 0.19215687, 0.3764706, 0.85882354)
+offset_left = 54.0
+offset_top = 222.0
+offset_right = 136.0
+offset_bottom = 243.0
+theme_override_colors/font_color = Color(0.9607843, 0.60784316, 0.92156863, 1)
+theme_override_colors/font_outline_color = Color(0.23137255, 0.1254902, 0.25882354, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("3_8ln24")
 theme_override_font_sizes/font_size = 18

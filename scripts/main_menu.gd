@@ -16,6 +16,13 @@ func _ready() -> void:
 	
 	OptionsMenu.visibility_changed.connect(func(): $SettingsButton.button_pressed = OptionsMenu.visible)
 
+func _input(event: InputEvent) -> void:
+	if (event is InputEventKey or event is InputEventJoypadButton) and event.is_pressed() and not event.is_echo():
+		if event is InputEventKey and event.keycode == KEY_ESCAPE:
+			return
+		if not OptionsMenu.visible:
+			_on_start_button_pressed()
+
 func _on_start_button_pressed() -> void:
 	if iniciando_jogo:
 		return

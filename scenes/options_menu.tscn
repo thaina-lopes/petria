@@ -10,7 +10,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.584314, 0.537255, 0.47451, 1)
+border_color = Color(0.55, 0.28, 0.75, 1.0)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
@@ -78,7 +78,7 @@ theme_override_constants/separation = -1
 layout_mode = 2
 alignment = 1
 
-[node name="LeftSpacer" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Header"]
+[node name="LeftSpacer" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=1638362652]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_klmno")
@@ -107,10 +107,10 @@ flat = true
 [node name="MusicCheckBox" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=217040054]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_focus_color = Color(0.1, 0.1, 0.2, 1)
 theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.2, 1)
 theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.2, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.1, 0.1, 0.2, 1)
-theme_override_colors/font_focus_color = Color(0.1, 0.1, 0.2, 1)
 theme_override_fonts/font = ExtResource("3_klmno")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
@@ -119,10 +119,10 @@ text = "KEY_DISABLE_MUSIC"
 [node name="SFXCheckBox" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1400909638]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_focus_color = Color(0.1, 0.1, 0.2, 1)
 theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.2, 1)
 theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.2, 1)
 theme_override_colors/font_hover_pressed_color = Color(0.1, 0.1, 0.2, 1)
-theme_override_colors/font_focus_color = Color(0.1, 0.1, 0.2, 1)
 theme_override_fonts/font = ExtResource("3_klmno")
 theme_override_font_sizes/font_size = 14
 theme_override_styles/focus = SubResource("StyleBoxFlat_focus")

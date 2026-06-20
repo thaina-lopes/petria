@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://5rpdrtg45w3a"]
 
 [ext_resource type="Script" uid="uid://b4241wxfwngwg" path="res://scripts/level_1.gd" id="1_15mv3"]
-[ext_resource type="Texture2D" uid="uid://c1i0ppv13wvhq" path="res://assets/backback.png" id="2_e3sih"]
+[ext_resource type="Texture2D" uid="uid://ila77emk88tk" path="res://assets/back03.png" id="2_so66j"]
 [ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="3_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://bh4rd27jkm8nh" path="res://scenes/fragment.tscn" id="4_2os1m"]
 [ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://sound/music.mp3" id="5_go7sj"]
@@ -593,9 +593,9 @@ hue_variation_max = 0.019999977
 script = ExtResource("1_15mv3")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=594446998]
-position = Vector2(239.77776, 151)
-scale = Vector2(1.1259259, 1.1259259)
-texture = ExtResource("2_e3sih")
+position = Vector2(240.23369, 107.187904)
+scale = Vector2(0.1777646, 0.1777646)
+texture = ExtResource("2_so66j")
 
 [node name="Player" parent="." unique_id=1984505922 instance=ExtResource("3_2y5yt")]
 z_index = 1
@@ -614,10 +614,10 @@ position = Vector2(400, 55)
 position = Vector2(192, 168)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=948877902]
-bus = &"Music"
 stream = ExtResource("5_go7sj")
 volume_db = -25.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="Tiles" type="Node2D" parent="." unique_id=1438393167]

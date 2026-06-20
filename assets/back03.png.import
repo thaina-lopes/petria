@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2x8dr0hegc2e"
-path="res://.godot/imported/tela_inicial.png-f719f83abef2f8aa4293e3481a174a45.ctex"
+uid="uid://ila77emk88tk"
+path="res://.godot/imported/back03.png-3763bc5e548a5efd58e7cf3114e743d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tela_inicial.png"
-dest_files=["res://.godot/imported/tela_inicial.png-f719f83abef2f8aa4293e3481a174a45.ctex"]
+source_file="res://assets/back03.png"
+dest_files=["res://.godot/imported/back03.png-3763bc5e548a5efd58e7cf3114e743d7.ctex"]
 
 [params]
 

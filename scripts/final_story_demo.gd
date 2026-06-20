@@ -3,18 +3,25 @@ extends Control
 @onready var rich_text_label = $RichTextLabel
 @onready var animation_player = $TransitionLayer/AnimationPlayer
 @onready var dialog_box = $TextureRect
-@onready var dialog_box2 = get_node_or_null("TextureRect2")
 
 var dialog_groups = [
 	[
-		"Há  muito  tempo,  os  Fragmentos  desapareceram.",
-		"E  com  eles,  o  mundo  começou  a  silenciar...",
-		"Um  a  um,  todos  ficaram  imóveis."
+		"Os primeiros Fragmentos foram encontrados.",
+		"Mas isso foi apenas o começo.",
+		"O mundo permanece em silêncio."
 	],
 	[
-		"Ninguém  se  lembra  do  motivo.",
-		"Ninguém  se  lembra  o  que  aconteceu.",
-		"Mas  os  Fragmentos  ainda  chamam  por  alguém..."
+		"Ainda existem lugares inalcançados.",
+		"Memórias que já não podem ser lembradas.",
+		"E verdades que não foram reveladas."
+	],
+	[
+		"Há algo que ninguém mais parece notar.",
+		"A cada Fragmento encontrado...",
+		"...o silêncio parece diferente."
+	],
+	[
+		"Continua..."
 	]
 ]
 
@@ -38,10 +45,8 @@ func _ready() -> void:
 	
 	rich_text_label.text = ""
 	
-	# Esconde as caixas de diálogo inicialmente
+	# Esconde a caixa de diálogo inicialmente
 	dialog_box.modulate.a = 0.0
-	if dialog_box2:
-		dialog_box2.modulate.a = 0.0
 	
 	if has_node("TransitionLayer/FadeRect"):
 		$TransitionLayer/FadeRect.color.a = 1.0
@@ -52,7 +57,7 @@ func _ready() -> void:
 	start_cinematic()
 
 func start_cinematic() -> void:
-	# Aguarda 2 segundos com apenas a imagem de fundo
+	# Aguarda 1.5 segundos com apenas a imagem de fundo
 	await get_tree().create_timer(1.5).timeout
 	
 	# Faz a caixa de diálogo surgir aos poucos (fade in)
@@ -75,9 +80,6 @@ func _input(event: InputEvent) -> void:
 			else:
 				rich_text_label.text = "" # Limpa o texto
 				
-				if current_group_index == 1 and dialog_box2:
-					dialog_box.modulate.a = 0.0
-					dialog_box2.modulate.a = 1.0
 				start_next_group()
 
 func start_next_group() -> void:
@@ -107,6 +109,5 @@ func finish_history() -> void:
 	if animation_player:
 		animation_player.play("fade_out")
 		await animation_player.animation_finished
-	# Como o main menu ia para o level_1, e agora passa pela history, vamos para o level_1
-	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
-
+	# Vamos para a final_scene
+	get_tree().change_scene_to_file("res://scenes/final_scene.tscn")

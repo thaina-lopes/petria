@@ -6,6 +6,7 @@ extends Control
 var voltando_menu := false
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	time_label.text = "Tempo: " + GameManager.formatar_tempo()
 	deaths_label.text = "Tentativas: %d" % GameManager.mortes
 
@@ -25,12 +26,30 @@ func _on_menu_button_pressed() -> void:
 
 	voltando_menu = true
 	$MenuButton.disabled = true
+	if has_node("ExitButton"):
+		$ExitButton.disabled = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	$TransitionLayer/AnimationPlayer.play("fade_out")
 	fade_out_musica()
 
 	await $TransitionLayer/AnimationPlayer.animation_finished
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+func _on_exit_button_pressed() -> void:
+	if voltando_menu:
+		return
+		
+	voltando_menu = true
+	$MenuButton.disabled = true
+	if has_node("ExitButton"):
+		$ExitButton.disabled = true
+		
+	$TransitionLayer/AnimationPlayer.play("fade_out")
+	fade_out_musica()
+	
+	await $TransitionLayer/AnimationPlayer.animation_finished
+	get_tree().quit()
 
 func fade_in_musica() -> void:
 	var tween = create_tween()

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bn6ahusmlyjij"]
 
 [ext_resource type="Script" uid="uid://d2wrkmru23wvk" path="res://scripts/history.gd" id="1_history_script"]
-[ext_resource type="Texture2D" uid="uid://bbmvkp0lfb1kg" path="res://assets/background_his.png" id="2_4pf11"]
+[ext_resource type="Texture2D" uid="uid://cmruua0kaa4l6" path="res://assets/tileset/back_history.png" id="2_ntjcj"]
 [ext_resource type="Texture2D" uid="uid://do154xkuk5a4f" path="res://assets/HUD/text01.png" id="3_4pf11"]
 [ext_resource type="Texture2D" uid="uid://b88qx247cpgjn" path="res://assets/HUD/text02.png" id="4_ntjcj"]
 [ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://sound/music.mp3" id="5_asvoj"]
-[ext_resource type="FontFile" uid="uid://5objkv8d0g6l" path="res://fonts/PixelOperator-Bold.ttf" id="5_ntjcj"]
+[ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="5_ntjcj"]
 [ext_resource type="AudioStream" uid="uid://b2sc7l6fwaqtg" path="res://sound/mystery.mp3" id="6_4pf11"]
 
 [sub_resource type="Animation" id="Animation_ejswk"]
@@ -67,21 +67,19 @@ offset_right = 479.0
 offset_bottom = 269.0
 script = ExtResource("1_history_script")
 
-[node name="Background" type="TextureRect" parent="." unique_id=1302318989]
+[node name="Background" type="TextureRect" parent="." unique_id=1988705228]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -241.5
-offset_top = -224.5
-offset_right = 241.1666
-offset_bottom = 137.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -91.0
+offset_right = 3610.439
+offset_bottom = 1902.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_4pf11")
-expand_mode = 1
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_ntjcj")
 stretch_mode = 4
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=106602539]
@@ -91,9 +89,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -185.5
-offset_top = -92.0
-offset_right = 185.5
+offset_left = -161.30435
+offset_top = -85.0
+offset_right = 161.30435
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_4pf11")
@@ -107,9 +106,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -185.5
-offset_top = -92.0
-offset_right = 185.5
+offset_left = -161.5
+offset_top = -85.0
+offset_right = 161.1087
+offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("4_ntjcj")
@@ -118,19 +118,18 @@ stretch_mode = 4
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=725139669]
 layout_mode = 0
-offset_left = 138.0
-offset_top = 198.0
-offset_right = 396.0
-offset_bottom = 251.0
-theme_override_colors/default_color = Color(0.09803922, 0.09803922, 0.2, 1)
-theme_override_constants/line_separation = 3
+offset_left = 151.0
+offset_top = 200.0
+offset_right = 409.0
+offset_bottom = 253.0
+theme_override_colors/default_color = Color(0.23921569, 0.16078432, 0.2784314, 1)
+theme_override_constants/line_separation = 1
 theme_override_fonts/normal_font = ExtResource("5_ntjcj")
-theme_override_font_sizes/normal_font_size = 9
+theme_override_font_sizes/normal_font_size = 10
 scroll_active = false
 autowrap_mode = 2
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1579223262]
-visible = false
 
 [node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=1367237258]
 anchors_preset = 15

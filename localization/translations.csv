@@ -1,5 +1,5 @@
 id;pt;en
-KEY_FINISH_TITLE;Você concluiu Petria!;You completed Petria!
+KEY_FINISH_TITLE;Você concluiu a demo do Petria!;You completed Petria!
 KEY_THANK_YOU;Obrigada por jogar meu joguinho <3;Thanks for playing my little game <3
 KEY_TIME;Tempo:;Time:
 KEY_ATTEMPTS;Tentativas:;Attempts:
@@ -20,3 +20,4 @@ KEY_ACTION_PETRIFY;Petrificar:;Petrify:
 KEY_ACTION_RESTART;Reiniciar fase:;Restart level:
 KEY_ACTION_MENU;Menu:;Menu:
 KEY_START;Pressione qualquer tecla para iniciar;Press any key to start
+KEY_EXIT;SAIR;EXIT

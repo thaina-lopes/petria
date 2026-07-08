@@ -13,7 +13,7 @@ enum PlayerState {
 	HURT
 }
 
-const SPEED = 110.0
+const SPEED = 100.0
 const ACCELERATION = 900.0
 const FRICTION = 1200.0
 const JUMP_VELOCITY = -300.0
@@ -271,18 +271,22 @@ func update_flip(direction: float) -> void:
 
 
 func update_horizontal_movement(direction: float, delta: float) -> void:
+	var effective_speed = SPEED
+	if get_tree().current_scene and get_tree().current_scene.name == "insideTent":
+		effective_speed = SPEED * 0.8 # Caminha a 40% da velocidade normal na tenda
+
 	if DisplayServer.is_touchscreen_available():
 		# --- MOBILE: Movimentação Arcade Instantânea ---
 		# O dedo do jogador (que arrasta no joystick) dita a velocidade perfeitamente
 		if direction != 0:
-			velocity.x = direction * SPEED
+			velocity.x = direction * effective_speed
 		else:
 			# Pequena desaceleração rápida ao invés de frear a seco em 1 frame
 			velocity.x = move_toward(velocity.x, 0, FRICTION * 1.5 * delta)
 	else:
 		# --- DESKTOP: Movimentação com Inércia e Aceleração ---
 		if direction != 0:
-			var target_speed = direction * SPEED
+			var target_speed = direction * effective_speed
 			var current_accel = ACCELERATION
 			
 			# Melhoria de responsividade 

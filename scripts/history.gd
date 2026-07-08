@@ -21,20 +21,27 @@ var dialog_groups = [
 var current_group_index = 0
 var is_typing = true # começa true para bloquear input durante a introdução
 var text_speed = 0.05
-var arrow_label: Label
+var arrow_indicator: Polygon2D
 
 func _ready() -> void:
-	arrow_label = Label.new()
-	arrow_label.text = "▼"
-	var font = rich_text_label.get_theme_font("normal_font")
-	if font:
-		arrow_label.add_theme_font_override("font", font)
-	arrow_label.add_theme_font_size_override("font_size", 11)
-	arrow_label.add_theme_color_override("font_color", Color("#3d2947"))
-	add_child(arrow_label)
+	arrow_indicator = Polygon2D.new()
+	arrow_indicator.polygon = PackedVector2Array([
+		Vector2(-4, -3),
+		Vector2(4, -3),
+		Vector2(0, 2)
+	])
+	arrow_indicator.color = Color("#3d2947")
+	add_child(arrow_indicator)
+	
 	# Posiciona no canto inferior direito da caixa de texto
-	arrow_label.position = Vector2(rich_text_label.position.x + rich_text_label.size.x - 35, rich_text_label.position.y + rich_text_label.size.y - 16)
-	arrow_label.hide()
+	var base_pos = Vector2(rich_text_label.position.x + rich_text_label.size.x - 30, rich_text_label.position.y + rich_text_label.size.y - 12)
+	arrow_indicator.position = base_pos
+	arrow_indicator.hide()
+	
+	# Animação de flutuação
+	var tween = create_tween().set_loops()
+	tween.tween_property(arrow_indicator, "position:y", base_pos.y + 3, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(arrow_indicator, "position:y", base_pos.y, 0.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	
 	rich_text_label.text = ""
 	
@@ -67,7 +74,7 @@ func start_cinematic() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") or event.is_action_pressed("jump"): # Espaço ou Enter
 		if not is_typing and current_group_index < dialog_groups.size():
-			arrow_label.hide()
+			arrow_indicator.hide()
 			current_group_index += 1
 			
 			if current_group_index >= dialog_groups.size():
@@ -100,7 +107,7 @@ func start_next_group() -> void:
 		if phrase_index < group.size() - 1:
 			await get_tree().create_timer(0.4).timeout
 	
-	arrow_label.show()
+	arrow_indicator.show()
 	is_typing = false
 
 func finish_history() -> void:

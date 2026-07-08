@@ -5,6 +5,8 @@ extends Control
 var iniciando_jogo := false
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
 	$TransitionLayer/FadeRect.color.a = 1.0
 	$TransitionLayer/AnimationPlayer.play("fade_in")
 

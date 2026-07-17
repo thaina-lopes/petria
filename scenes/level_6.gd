@@ -135,7 +135,7 @@ func enter_tent() -> void:
 
 	if has_node("TransitionLayer/AnimationPlayer"):
 		await $TransitionLayer/AnimationPlayer.animation_finished
-	get_tree().change_scene_to_file("res://scenes/inside_tent.tscn")
+	get_tree().change_scene_to_file("res://scenes/cutscene.tscn")
 
 func fade_in_musica() -> void:
 	if not has_node("Music"): return

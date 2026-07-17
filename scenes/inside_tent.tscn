@@ -1548,6 +1548,7 @@ z_index = 1
 position = Vector2(170, 220)
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1434515915]
+visible = false
 
 [node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=1537047556]
 anchors_preset = 15

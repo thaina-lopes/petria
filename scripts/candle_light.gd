@@ -34,6 +34,7 @@ func _ready() -> void:
 	point_light.color = light_color
 	point_light.energy = light_energy
 	point_light.blend_mode = Light2D.BLEND_MODE_ADD
+	point_light.range_z_max = 0 # Não ilumina objetos com z_index >= 1 (como o Player)
 	
 	add_child(point_light)
 	

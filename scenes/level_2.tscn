@@ -1189,6 +1189,7 @@ action = "jump"
 visibility_mode = 1
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1062293800]
+visible = false
 
 [node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=1911773711]
 anchors_preset = 15

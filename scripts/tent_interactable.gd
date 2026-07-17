@@ -2,6 +2,7 @@ extends Area2D
 
 var label: Label
 var player_in_range := false
+var current_player: Node2D = null
 
 func _ready() -> void:
 	# 1. Configura os sinais para detectar o player
@@ -53,17 +54,27 @@ func _input(event: InputEvent) -> void:
 			interact()
 
 func interact() -> void:
-	print("Interagiu com o objeto na tenda!")
-	# Aqui você pode colocar a lógica que quiser (abrir diálogo, etc)
-
+	if current_player and current_player.has_method("sit_on_bench"):
+		var bench_pos = global_position
+		for child in get_children():
+			if child is CollisionShape2D:
+				bench_pos = child.global_position
+				break
+				
+		current_player.sit_on_bench(bench_pos)
+		if label:
+			label.visible = false # Esconde o texto enquanto está sentado
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player" or body.is_in_group("player"):
 		player_in_range = true
+		current_player = body
 		if label:
 			label.visible = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Player" or body.is_in_group("player"):
 		player_in_range = false
+		if current_player == body:
+			current_player = null
 		if label:
 			label.visible = false

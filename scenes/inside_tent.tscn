@@ -1548,7 +1548,6 @@ z_index = 1
 position = Vector2(170, 220)
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1434515915]
-visible = false
 
 [node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=1537047556]
 anchors_preset = 15
@@ -1566,7 +1565,7 @@ color = Color(0, 0, 0, 1)
 libraries/ = SubResource("AnimationLibrary_ddjlk")
 
 [node name="CandleLight" parent="." unique_id=952626547 instance=ExtResource("9_qwvvf")]
-position = Vector2(222, 216)
+position = Vector2(206, 209)
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=800810948]
 stream = ExtResource("9_rldup")
@@ -1601,10 +1600,10 @@ position = Vector2(217.5, 231.5)
 shape = SubResource("RectangleShape2D_2fxic")
 
 [node name="Label" type="Label" parent="Area2D" unique_id=1842169635]
-offset_left = 205.0
-offset_top = 186.0
-offset_right = 302.0
-offset_bottom = 209.0
+offset_left = 208.0
+offset_top = 187.0
+offset_right = 305.0
+offset_bottom = 210.0
 theme_override_fonts/font = ExtResource("13_2pb03")
 theme_override_font_sizes/font_size = 7
-text = "- Pressione Q "
+text = "Q — sentar"

@@ -10,10 +10,11 @@ enum PlayerState {
 	JUMP,
 	PETRIFY,
 	DEAD,
-	HURT
+	HURT,
+	SIT
 }
 
-const SPEED = 100.0
+const SPEED = 110.0
 const ACCELERATION = 900.0
 const FRICTION = 1200.0
 const JUMP_VELOCITY = -300.0
@@ -78,7 +79,16 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("petrify"):
-		criar_estatua()
+		if state == PlayerState.SIT:
+			stand_up()
+		else:
+			criar_estatua()
+		return
+		
+	# Sai do banco se apertar pulo ou se mover
+	if state == PlayerState.SIT:
+		if Input.is_action_just_pressed("jump") or Input.get_axis("move_left", "move_right") != 0:
+			stand_up()
 		return
 		
 	if not pode_mover and state != PlayerState.HURT:
@@ -309,7 +319,7 @@ func update_horizontal_movement(direction: float, delta: float) -> void:
 
 
 func update_state(direction: float) -> void:
-	if state == PlayerState.DEAD or state == PlayerState.PETRIFY or state == PlayerState.HURT:
+	if state == PlayerState.DEAD or state == PlayerState.PETRIFY or state == PlayerState.HURT or state == PlayerState.SIT:
 		return
 
 	# A lógica de impulso do pulo agora ocorre em _physics_process
@@ -343,5 +353,28 @@ func update_animation() -> void:
 		PlayerState.PETRIFY:
 			if anim.animation != "petrify":
 				anim.play("petrify")
+		PlayerState.SIT:
+			if anim.animation != "sit":
+				if anim.sprite_frames.has_animation("sit"):
+					anim.play("sit")
+				else:
+					anim.play("idle")
+					anim.pause()
 		PlayerState.DEAD:
 			pass
+
+func sit_on_bench(bench_pos: Vector2) -> void:
+	pode_mover = false
+	velocity = Vector2.ZERO
+	state = PlayerState.SIT
+	
+	# Centraliza no banco (ajustando o Y se precisar)
+	global_position.x = bench_pos.x + 1
+	global_position.y = bench_pos.y - 11
+	
+	update_animation()
+
+func stand_up() -> void:
+	state = PlayerState.IDLE
+	pode_mover = true
+	anim.play("idle")

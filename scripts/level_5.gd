@@ -98,7 +98,7 @@ func finalizar_fase() -> void:
 	if has_node("TransitionLayer/AnimationPlayer"):
 		await $TransitionLayer/AnimationPlayer.animation_finished
 	GameManager.finalizar_jogo()
-	get_tree().change_scene_to_file("res://scenes/final_story_demo.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_6.tscn")
 
 func fade_in_musica() -> void:
 	if not has_node("Music"): return

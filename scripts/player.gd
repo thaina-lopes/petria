@@ -10,7 +10,8 @@ enum PlayerState {
 	JUMP,
 	PETRIFY,
 	DEAD,
-	HURT
+	HURT,
+	SIT
 }
 
 const SPEED = 110.0
@@ -59,6 +60,7 @@ func _ready() -> void:
 	sfx_hurt = AudioStreamPlayer2D.new()
 	sfx_hurt.stream = preload("res://sound/hurt.ogg")
 	sfx_hurt.volume_db = -5.0
+	sfx_hurt.bus = "SFX"
 	add_child(sfx_hurt)
 
 func _physics_process(delta: float) -> void:
@@ -77,7 +79,16 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if Input.is_action_just_pressed("petrify"):
-		criar_estatua()
+		if state == PlayerState.SIT:
+			stand_up()
+		else:
+			criar_estatua()
+		return
+		
+	# Sai do banco se apertar pulo ou se mover
+	if state == PlayerState.SIT:
+		if Input.is_action_just_pressed("jump") or Input.get_axis("move_left", "move_right") != 0:
+			stand_up()
 		return
 		
 	if not pode_mover and state != PlayerState.HURT:
@@ -270,18 +281,22 @@ func update_flip(direction: float) -> void:
 
 
 func update_horizontal_movement(direction: float, delta: float) -> void:
+	var effective_speed = SPEED
+	if get_tree().current_scene and get_tree().current_scene.name == "insideTent":
+		effective_speed = SPEED * 0.8 # Caminha a 40% da velocidade normal na tenda
+
 	if DisplayServer.is_touchscreen_available():
 		# --- MOBILE: Movimentação Arcade Instantânea ---
 		# O dedo do jogador (que arrasta no joystick) dita a velocidade perfeitamente
 		if direction != 0:
-			velocity.x = direction * SPEED
+			velocity.x = direction * effective_speed
 		else:
 			# Pequena desaceleração rápida ao invés de frear a seco em 1 frame
 			velocity.x = move_toward(velocity.x, 0, FRICTION * 1.5 * delta)
 	else:
 		# --- DESKTOP: Movimentação com Inércia e Aceleração ---
 		if direction != 0:
-			var target_speed = direction * SPEED
+			var target_speed = direction * effective_speed
 			var current_accel = ACCELERATION
 			
 			# Melhoria de responsividade 
@@ -304,7 +319,7 @@ func update_horizontal_movement(direction: float, delta: float) -> void:
 
 
 func update_state(direction: float) -> void:
-	if state == PlayerState.DEAD or state == PlayerState.PETRIFY or state == PlayerState.HURT:
+	if state == PlayerState.DEAD or state == PlayerState.PETRIFY or state == PlayerState.HURT or state == PlayerState.SIT:
 		return
 
 	# A lógica de impulso do pulo agora ocorre em _physics_process
@@ -338,5 +353,28 @@ func update_animation() -> void:
 		PlayerState.PETRIFY:
 			if anim.animation != "petrify":
 				anim.play("petrify")
+		PlayerState.SIT:
+			if anim.animation != "sit":
+				if anim.sprite_frames.has_animation("sit"):
+					anim.play("sit")
+				else:
+					anim.play("idle")
+					anim.pause()
 		PlayerState.DEAD:
 			pass
+
+func sit_on_bench(bench_pos: Vector2) -> void:
+	pode_mover = false
+	velocity = Vector2.ZERO
+	state = PlayerState.SIT
+	
+	# Centraliza no banco (ajustando o Y se precisar)
+	global_position.x = bench_pos.x + 1
+	global_position.y = bench_pos.y - 11
+	
+	update_animation()
+
+func stand_up() -> void:
+	state = PlayerState.IDLE
+	pode_mover = true
+	anim.play("idle")

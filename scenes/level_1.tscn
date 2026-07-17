@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://5rpdrtg45w3a"]
 
 [ext_resource type="Script" uid="uid://b4241wxfwngwg" path="res://scripts/level_1.gd" id="1_15mv3"]
-[ext_resource type="Texture2D" uid="uid://c1i0ppv13wvhq" path="res://assets/backback.png" id="2_e3sih"]
+[ext_resource type="Texture2D" uid="uid://t5hlu01moaq0" path="res://assets/BACK_.png" id="2_so66j"]
 [ext_resource type="PackedScene" uid="uid://b2jb46ednhbew" path="res://entities/player.tscn" id="3_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://bh4rd27jkm8nh" path="res://scenes/fragment.tscn" id="4_2os1m"]
 [ext_resource type="AudioStream" uid="uid://bkmknmebc3vig" path="res://sound/music.mp3" id="5_go7sj"]
@@ -593,9 +593,9 @@ hue_variation_max = 0.019999977
 script = ExtResource("1_15mv3")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=594446998]
-position = Vector2(239.77776, 151)
-scale = Vector2(1.1259259, 1.1259259)
-texture = ExtResource("2_e3sih")
+position = Vector2(240.49315, 135.57297)
+scale = Vector2(0.9816215, 0.9816216)
+texture = ExtResource("2_so66j")
 
 [node name="Player" parent="." unique_id=1984505922 instance=ExtResource("3_2y5yt")]
 z_index = 1
@@ -617,6 +617,7 @@ position = Vector2(192, 168)
 stream = ExtResource("5_go7sj")
 volume_db = -25.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [node name="Tiles" type="Node2D" parent="." unique_id=1438393167]
@@ -736,6 +737,7 @@ action = "jump"
 visibility_mode = 1
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1809761779]
+visible = false
 
 [node name="FadeRect" type="ColorRect" parent="TransitionLayer" unique_id=1844620177]
 anchors_preset = 15

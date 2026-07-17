@@ -1,0 +1,182 @@
+[gd_scene format=3 uid="uid://11chhk5bjjin"]
+
+[ext_resource type="Script" uid="uid://d15ugj854bhjq" path="res://scripts/options_menu.gd" id="1_abcde"]
+[ext_resource type="Texture2D" uid="uid://br3iusx7hv2t5" path="res://assets/HUD/options_menu.png" id="2_fghij"]
+[ext_resource type="FontFile" uid="uid://bew4j0ap25cs" path="res://fonts/PixelOperator.ttf" id="3_klmno"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.55, 0.28, 0.75, 1.0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[node name="OptionsMenu" type="CanvasLayer" unique_id=140607067]
+layer = 100
+script = ExtResource("1_abcde")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1635120173]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="PanelContainer" type="Control" parent="." unique_id=1257481604]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -110.0
+offset_right = 160.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="PanelContainer" unique_id=1342125283]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fghij")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=225703036]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -2.0
+offset_right = -31.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=478487112]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Header" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=256106682]
+layout_mode = 2
+alignment = 1
+
+[node name="LeftSpacer" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=1638362652]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 20
+text = " X "
+
+[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=1948697579]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.24, 0.16, 0.28, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 19
+text = "KEY_SETTINGS"
+horizontal_alignment = 1
+
+[node name="CloseButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Header" unique_id=258766126]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.15, 0.15, 1)
+theme_override_colors/font_hover_color = Color(0.8, 0.2, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+text = " X "
+flat = true
+
+[node name="MusicCheckBox" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=217040054]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_focus_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+text = "KEY_DISABLE_MUSIC"
+
+[node name="SFXCheckBox" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1400909638]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_focus_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_pressed_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_hover_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 14
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+text = "KEY_DISABLE_SFX"
+
+[node name="ControlsLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1168821598]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.24, 0.16, 0.28, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 17
+text = "KEY_CONTROLS_TITLE"
+horizontal_alignment = 1
+
+[node name="ControlsGrid" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1216805629]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 2
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/VBoxContainer/ControlsGrid" unique_id=1209677497]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Action1" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ControlsGrid" unique_id=511107556]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 12
+text = "KEY_ACTION_MOVE"
+
+[node name="Action2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ControlsGrid" unique_id=359679061]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 12
+text = "KEY_ACTION_JUMP"
+
+[node name="Action3" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ControlsGrid" unique_id=1737794553]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 12
+text = "KEY_ACTION_PETRIFY"
+
+[node name="Action4" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ControlsGrid" unique_id=1802074141]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 12
+text = "KEY_ACTION_RESTART"
+
+[node name="Action5" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ControlsGrid" unique_id=1519435888]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.1, 0.1, 0.2, 1)
+theme_override_fonts/font = ExtResource("3_klmno")
+theme_override_font_sizes/font_size = 12
+text = "KEY_ACTION_MENU"

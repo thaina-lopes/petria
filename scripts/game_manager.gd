@@ -10,11 +10,13 @@ var tutorial_movimento_visto := false
 var canvas_mod: CanvasModulate
 
 func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	canvas_mod = CanvasModulate.new()
 	canvas_mod.color = Color(0.25, 0.25, 0.45) # Clima mágico noturno
 	add_child(canvas_mod)
 
 func iniciar_jogo() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	tempo_total = 0.0
 	mortes = 0
 	vidas = 3
@@ -46,7 +48,7 @@ func _process(delta: float) -> void:
 		if scene_name != "MainMenu" and scene_name != "FinalScene" and not jogo_foi_iniciado:
 			iniciar_jogo()
 			
-		if scene_name == "MainMenu" or scene_name == "FinalScene" or scene_name == "History":
+		if scene_name == "MainMenu" or scene_name == "FinalScene" or scene_name == "History" or scene_name == "final_story_demo" or scene_name == "insideTent":
 			canvas_mod.color = Color(1, 1, 1) # Remove o filtro
 		else:
 			canvas_mod.color = Color(0.4, 0.4, 0.6) # Aplica o filtro mágico
